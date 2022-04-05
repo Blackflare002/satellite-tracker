@@ -1,39 +1,46 @@
-import { useEffect } from "react";
-
-//The first number is always the latitude and the second is the longitude.
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { IoEarthOutline } from "react-icons/io5";
 
 const Home = () => {
-	let name = null;
-	let norad = null;
-	let lat = null;
-	let long = null;
-	let info = null;
+	const [sats, setSats] = useState(null);
+	let theNumber = Math.round(Math.random() * 49);
+	// let id = sats[theNumber].id;
+	// console.log(id);
+
 	useEffect(() => {
-		fetch("https://api.spectator.earth/satellite/1/")
+		fetch("https://api.spectator.earth/satellite/")
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
-				console.log(data.properties);
-				console.log(data.properties.name);
-				console.log(data.properties.norad_id);
-				console.log(
-					data.geometry.coordinates[0],
-					data.geometry.coordinates[1]
-				);
-			})
-			.then((data) => (info = data));
+				setSats(data.features[theNumber]);
+				console.log(sats);
+				// let id = sats.id.toString();
+				console.log(sats.id);
+
+				// console.log(data);
+				// console.log(data.features);
+				// console.log(data.features[theNumber]);
+				// console.log(data.properties.name);
+				// console.log(data.properties.norad_id);
+				// console.log(
+				// 	data.geometry.coordinates[0],
+				// 	data.geometry.coordinates[1]
+				// );
+			});
 	}, []);
-	name = info.properties.name;
-	norad = info.properties.norad_id;
-	lat = info.geometry.coordinates[0];
-	long = info.geometry.coordinates[1];
-	return (
+
+	return sats ? (
 		<>
-			<p>{name}</p>
-			<p>{norad}</p>
-			<p>latitude: {lat}</p>
-			<p>longitude: {long}</p>
+			<div>Homepage...</div>
+			{/* <div>{sats[theNumber].properties.name}</div> */}
+			<div>
+				<Link to={"/details"}>
+					<IoEarthOutline />
+				</Link>
+			</div>
 		</>
+	) : (
+		<div>Loading...</div>
 	);
 };
 

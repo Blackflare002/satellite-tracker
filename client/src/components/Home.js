@@ -1,38 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
+import SatsContext from "./SatsContext";
 
 const Home = () => {
-	const [sats, setSats] = useState(null);
-	let theNumber = Math.round(Math.random() * 49);
-	// let id = sats[theNumber].id;
-	// console.log(id);
+	const { sats, setSats, theNumber } = useContext(SatsContext);
+	const { id, properties } = sats
+		? sats
+		: { id: null, properties: null };
 
-	useEffect(() => {
-		fetch("https://api.spectator.earth/satellite/")
-			.then((res) => res.json())
-			.then((data) => {
-				setSats(data.features[theNumber]);
-				console.log(sats);
-				// let id = sats.id.toString();
-				console.log(sats.id);
+	// console.log(sats);
+	console.log(id ? id : null);
 
-				// console.log(data);
-				// console.log(data.features);
-				// console.log(data.features[theNumber]);
-				// console.log(data.properties.name);
-				// console.log(data.properties.norad_id);
-				// console.log(
-				// 	data.geometry.coordinates[0],
-				// 	data.geometry.coordinates[1]
-				// );
-			});
-	}, []);
-
-	return sats ? (
+	return id ? (
 		<>
 			<div>Homepage...</div>
-			{/* <div>{sats[theNumber].properties.name}</div> */}
+			<div>{properties.name}</div>
+			<div>{id}</div>
 			<div>
 				<Link to={"/details"}>
 					<IoEarthOutline />
@@ -42,6 +26,7 @@ const Home = () => {
 	) : (
 		<div>Loading...</div>
 	);
+	// return (<div></div>)
 };
 
 export default Home;

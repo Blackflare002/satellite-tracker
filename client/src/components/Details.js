@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FaSpaceShuttle, FaSatellite } from "react-icons/fa";
 import {
 	GiBeamSatellite,
 	GiDefenseSatellite,
 	GiSatelliteCommunication,
 } from "react-icons/gi";
+import SatsContext from "./SatsContext";
 
 //The first number is always the latitude and the second is the longitude.
 
@@ -14,8 +15,10 @@ const Details = () => {
 	const [lat, setLat] = useState(null);
 	const [long, setLong] = useState(null);
 
+	const { sats, setSats, theNumber } = useContext(SatsContext);
+
 	useEffect(() => {
-		fetch("https://api.spectator.earth/satellite/1/")
+		fetch(`https://api.spectator.earth/satellite/${sats.id}/`)
 			.then((res) => res.json())
 			.then((data) => {
 				// console.log(data);
@@ -40,26 +43,21 @@ const Details = () => {
 		<GiDefenseSatellite />,
 		<GiSatelliteCommunication />,
 	];
-	// let number = 0;
-	// const randomIconNumber = (number) => {
-	// 	number = Math.floor(Math.random() * 6);
-	// 	console.log(number);
-	// 	return number;
-	// };
 
 	let randomIcon = icons[Math.floor(Math.random() * 6)];
 	// console.log(randomIcon);
 
-	if (!name || !norad || !lat || !long) {
+	if (!name || !norad || !lat || !long || !sats) {
 		return <div>Loading...</div>;
 	}
 	return (
 		<>
-			<p>{randomIcon}</p>
+			{randomIcon ? <div>{randomIcon}</div> : <FaSatellite />}
+			<p>{sats.id}</p>
 			<p>{name}</p>
 			<p>{norad}</p>
-			<p>latitude: {lat.toFixed(2)}</p>
-			<p>longitude: {long.toFixed(2)}</p>
+			<p>latitude: {lat.toFixed(3)}</p>
+			<p>longitude: {long.toFixed(3)}</p>
 			<a href={`https://maps.google.com/maps?q=${long},${lat}`}>
 				Link
 			</a>

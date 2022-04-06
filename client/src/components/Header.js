@@ -13,18 +13,19 @@ const Header = () => {
 
 const StyledLink = styled(Link)`
 	text-decoration: none;
+	color: var(--lighterGrey);
 `;
 
 const HeaderWrapper = styled.div`
 	width: 99vw;
-	border: solid 2px black;
+	border: solid 2px lightgray;
 	padding: 10px 5px;
 	text-decoration: none;
 `;
 
 const HeaderText = styled.div`
-	text-decoration: none;
-	color: black;
+	/* text-decoration: none; */
+	color: var(--offwhite);
 	font-size: large;
 	font-weight: bold;
 `;

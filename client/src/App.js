@@ -13,22 +13,27 @@ function App() {
 		<>
 			<BrowserRouter>
 				<GlobalStyles />
-				<Header />
-				<Routes>
-					<Route exact path="/" element={<Home />} />
-					<Route
-						exact
-						path="/details"
-						element={sats && <Details />}
-					/>
-				</Routes>
+				<Main>
+					<Header />
+					<Routes>
+						<Route exact path="/" element={<Home />} />
+						<Route
+							exact
+							path="/details"
+							element={sats && <Details />}
+						/>
+					</Routes>
+				</Main>
 			</BrowserRouter>
 		</>
 	);
 }
 
 const Main = styled.div`
-/* background-color: #0000ff; */
-`
+	background-color: #2c3233;
+	color: var(--offwhite);
+	font-family: sans-serif;
+	height: 100vh;
+`;
 
 export default App;

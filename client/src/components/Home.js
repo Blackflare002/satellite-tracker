@@ -15,8 +15,8 @@ const Home = () => {
 	return id ? (
 		<>
 			<div>Homepage...</div>
-			<div>{properties.name}</div>
-			<div>{id}</div>
+			{/* <div>{properties.name}</div> */}
+			{/* <div>{id}</div> */}
 			<div>
 				<Link to={"/details"}>
 					<IoEarthOutline />

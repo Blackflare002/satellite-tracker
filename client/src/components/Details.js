@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { FaSpaceShuttle, FaSatellite } from "react-icons/fa";
 import {
 	GiBeamSatellite,
@@ -14,6 +15,7 @@ const Details = () => {
 	const [norad, setNorad] = useState(null);
 	const [lat, setLat] = useState(null);
 	const [long, setLong] = useState(null);
+	const [update, setUpdate] = useState(false);
 
 	const { sats, setSats, theNumber } = useContext(SatsContext);
 
@@ -31,10 +33,10 @@ const Details = () => {
 				// );
 				setName(data.properties.name);
 				setNorad(data.properties.norad_id);
-				setLat(data.geometry.coordinates[0]);
-				setLong(data.geometry.coordinates[1]);
+				setLat(data.geometry ? data.geometry.coordinates[0] : null);
+				setLong(data.geometry ? data.geometry.coordinates[1] : null);
 			});
-	}, []);
+	}, [update]);
 
 	const icons = [
 		<FaSatellite />,
@@ -47,20 +49,25 @@ const Details = () => {
 	let randomIcon = icons[Math.floor(Math.random() * 6)];
 	// console.log(randomIcon);
 
-	if (!name || !norad || !lat || !long || !sats) {
+	if (!name || !norad || !sats) {
 		return <div>Loading...</div>;
 	}
 	return (
 		<>
 			{randomIcon ? <div>{randomIcon}</div> : <FaSatellite />}
-			<p>{sats.id}</p>
+			{/* <p>{sats.id}</p> */}
 			<p>{name}</p>
 			<p>{norad}</p>
-			<p>latitude: {lat.toFixed(3)}</p>
-			<p>longitude: {long.toFixed(3)}</p>
-			<a href={`https://maps.google.com/maps?q=${long},${lat}`}>
-				Link
-			</a>
+			<p>latitude: {lat ? lat.toFixed(3) : "N/A"}</p>
+			<p>longitude: {long ? long.toFixed(3) : "N/A"}</p>
+			{long && (
+				<a href={`https://maps.google.com/maps?q=${long},${lat}`}>
+					Link
+				</a>
+			)}
+			<button onClick={() => setUpdate(!update)}>
+				Update Coordinates
+			</button>
 		</>
 	);
 };

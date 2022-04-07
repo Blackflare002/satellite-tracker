@@ -5,23 +5,23 @@ const helmet = require("helmet");
 const app = express();
 const port = 8000;
 
+app.use(express.json());
 app.use(morgan("tiny"));
 app.use(cors());
 app.use(helmet());
 
-const { handleGetSatellites } = require("./handlers");
+const { postComment, getComments } = require("./handlers");
 
-app.get("/", (req, res) => {
-	// res.send("Hello World!");
-	res
-		.status(200)
-		.json({ status: 200, message: "This is the server response" });
-});
+// app.get("/", (req, res) => {
+// 	// res.send("Hello World!");
+// 	res
+// 		.status(200)
+// 		.json({ status: 200, message: "This is the server response" });
+// });
 
-// app.get(
-// 	"https://api.spectator.earth/satellite/1/",
-// 	handleGetSatellites
-// );
+app.post("/details", postComment);
+
+app.get("/comments/:id", getComments)
 
 // this is our catch all endpoint.
 app.get("*", (req, res) => {

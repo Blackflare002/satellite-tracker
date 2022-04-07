@@ -18,6 +18,8 @@ export const SatsContextProvider = ({ children }) => {
 			.then((res) => res.json())
 			.then((data) => {
 				setSats(data.features[theNumber]);
+				// setSats(data.features.filter((el) => el.id === 16)[0]);
+				//
 				// console.log(sats.id);
 				// console.log(sats);
 				// let id = sats.id.toString();

@@ -8,6 +8,7 @@ import {
 } from "react-icons/gi";
 import SatsContext from "./SatsContext";
 import styled from "styled-components";
+import Comments from "./Comments";
 
 //The first number is always the latitude and the second is the longitude.
 //MTL 45.507544685873405, -73.6357024529298
@@ -48,14 +49,23 @@ const Details = () => {
 	const writeUsername = (ev) => {
 		setUsername(ev.target.value);
 	};
-	const sendComment = () => {
+	const sendComment = (ev) => {
+		ev.preventDefault();
 		fetch("/details", {
-			body: JSON.stringify({ status: commentValue }),
+			body: JSON.stringify({
+				message: commentValue,
+				user: username,
+				sat: sats.id,
+			}),
 			headers: { "Content-Type": "application/json" },
 			method: "POST",
 		})
 			.then((res) => res.json())
-			.then((res) => console.log(res));
+			.then((res) => {
+				console.log(res);
+				setUsername("");
+				setCommentValue("");
+			});
 		// .catch(() => {
 		// 	setStatus("Error");
 		// })
@@ -70,7 +80,10 @@ const Details = () => {
 		<GiDefenseSatellite />,
 		<GiSatelliteCommunication />,
 	];
-	let randomIcon = icons[Math.floor(Math.random() * 6)];
+	const [randomNumber, setRandomNumber] = useState(
+		Math.floor(Math.random() * 6)
+	);
+	let randomIcon = icons[randomNumber];
 	// console.log(randomIcon);
 
 	if (!name || !norad || !sats) {
@@ -103,19 +116,23 @@ const Details = () => {
 							<input
 								placeholder="Enter a username!"
 								onChange={writeUsername}
+								value={username}
 							/>
 						</div>
 						<StyledTextarea
 							placeholder="Write a comment!"
 							onChange={writeComment}
+							value={commentValue}
 						/>
 						<div>
-							<button onClick={sendComment}>Post!</button>
+							<button onClick={(ev) => sendComment(ev)}>Post!</button>
 						</div>
 					</FormDiv>
 				</FormWrapper>
 			</form>
-			<div></div>
+			<div>
+				<Comments />
+			</div>
 		</>
 	);
 };
@@ -124,6 +141,7 @@ const FormWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border: 5px solid darkblue;
 `;
 
 const StyledTextarea = styled.textarea`
@@ -152,7 +170,7 @@ const ContentWrapper = styled.div`
 `;
 
 const IconWrapper = styled.div`
-	font-size: xx-large;
+	font-size: 80px;
 `;
 
 export default Details;

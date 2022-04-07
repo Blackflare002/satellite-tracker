@@ -20,7 +20,7 @@ const Details = () => {
 	const [long, setLong] = useState(null);
 	const [update, setUpdate] = useState(false);
 	const [commentValue, setCommentValue] = useState("");
-	const [username, setUsername] = useState(null);
+	const [username, setUsername] = useState("");
 
 	const { sats, setSats, theNumber } = useContext(SatsContext);
 
@@ -130,12 +130,21 @@ const Details = () => {
 					</FormDiv>
 				</FormWrapper>
 			</form>
-			<div>
-				<Comments />
-			</div>
+			<CommentsBox>
+				<Comments key={Math.floor(Math.random() * 99999)} />
+			</CommentsBox>
 		</>
 	);
 };
+
+const CommentsBox = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 15px;
+	margin-top: 20px;
+`;
 
 const FormWrapper = styled.div`
 	display: flex;

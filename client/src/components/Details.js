@@ -144,13 +144,18 @@ const CommentsBox = styled.div`
 	flex-direction: column;
 	gap: 15px;
 	margin-top: 20px;
+	/* height: fit-content; */
 `;
 
 const FormWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 5px solid darkblue;
+	border: 4px solid darkblue;
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 15px;
 `;
 
 const StyledTextarea = styled.textarea`
@@ -172,10 +177,11 @@ const ContentWrapper = styled.div`
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	margin: 25px;
+	margin: 20px;
 	padding: 10px;
 	gap: 10px;
 	border: 5px solid black;
+	max-height: 100vh;
 `;
 
 const IconWrapper = styled.div`

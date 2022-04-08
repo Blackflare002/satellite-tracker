@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import SatsContext from "./components/SatsContext";
 import GlobalStyles from "./components/GlobalStyles";
 import styled from "styled-components";
+import Search from "./components/Search";
+import SearchResults from "./components/SearchResults";
 
 function App() {
 	const { sats } = useContext(SatsContext);
@@ -15,6 +17,8 @@ function App() {
 				<GlobalStyles />
 				<Main>
 					<Header />
+					<Search />
+					<SearchResults />
 					<Routes>
 						<Route exact path="/" element={<Home />} />
 						<Route
@@ -33,7 +37,8 @@ const Main = styled.div`
 	background-color: #2c3233;
 	color: var(--offwhite);
 	font-family: sans-serif;
-	height: 100vh;
+	height: fit-content;
+	max-height: 100vh;
 `;
 
 export default App;

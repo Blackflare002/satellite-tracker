@@ -12,6 +12,8 @@ export const SatsContextProvider = ({ children }) => {
 	let theNumber = Math.round(Math.random() * 49);
 	// let id = sats[theNumber].id;
 	// console.log(id);
+	const [search, setSearch] = useState(null);
+
 
 	useEffect(() => {
 		fetch("https://api.spectator.earth/satellite/")
@@ -38,7 +40,7 @@ export const SatsContextProvider = ({ children }) => {
 	// console.log(sats ? sats.id : null);
 	//
 	return (
-		<SatsContext.Provider value={{ sats, setSats, theNumber }}>
+		<SatsContext.Provider value={{ sats, setSats, theNumber, search, setSearch }}>
 			{children}
 		</SatsContext.Provider>
 	);

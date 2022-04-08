@@ -17,7 +17,7 @@ const StyledLink = styled(Link)`
 `;
 
 const HeaderWrapper = styled.div`
-	width: 99vw;
+	max-width: 100%;
 	border: solid 2px lightgray;
 	padding: 10px 5px;
 	text-decoration: none;

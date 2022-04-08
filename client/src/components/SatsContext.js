@@ -13,7 +13,9 @@ export const SatsContextProvider = ({ children }) => {
 	// let id = sats[theNumber].id;
 	// console.log(id);
 	const [search, setSearch] = useState(null);
-
+	const [allSats, setAllSats] = useState(null);
+	const [searchResults, setSearchResults] = useState(null);
+	const [refresh, setRefresh] = useState(false);
 
 	useEffect(() => {
 		fetch("https://api.spectator.earth/satellite/")
@@ -21,6 +23,7 @@ export const SatsContextProvider = ({ children }) => {
 			.then((data) => {
 				// setSats(data.features[theNumber]);
 				setSats(data.features.filter((el) => el.id === 16)[0]);
+				setAllSats(data.features);
 				//
 				// console.log(sats.id);
 				// console.log(sats);
@@ -40,7 +43,21 @@ export const SatsContextProvider = ({ children }) => {
 	// console.log(sats ? sats.id : null);
 	//
 	return (
-		<SatsContext.Provider value={{ sats, setSats, theNumber, search, setSearch }}>
+		<SatsContext.Provider
+			value={{
+				sats,
+				setSats,
+				theNumber,
+				search,
+				setSearch,
+				allSats,
+				setAllSats,
+				searchResults,
+				setSearchResults,
+				refresh,
+				setRefresh,
+			}}
+		>
 			{children}
 		</SatsContext.Provider>
 	);

@@ -3,30 +3,44 @@ import styled from "styled-components";
 import SatsContext from "./SatsContext";
 
 const SearchResults = () => {
-	const [searchResults, setSearchResults] = useState(null);
-	const { search, setSearch } = useContext(SatsContext);
+	// const [searchResults, setSearchResults] = useState(null);
+	const {
+		search,
+		setSearch,
+		allSats,
+		setAllSats,
+		searchResults,
+		setSearchResults,
+	} = useContext(SatsContext);
 	useEffect(() => {
-		fetch(`https://api.spectator.earth/satellite/`)
-			.then((res) => res.json())
-			.then((data) => {
-				// console.log(data);
-				let results = filterPosts(data.features, search);
-				setSearchResults(results);
-				console.log(data.features);
-				console.log(search);
-				// setSearchResults(filterPosts(searchResults, search));
-			});
+		// fetch(`https://api.spectator.earth/satellite/`)
+		// 	.then((res) => res.json())
+		// 	.then((data) => {
+		// console.log(data);
+		let results = filterPosts(allSats, search);
+		setSearchResults(results);
+		// console.log(data.features);
+		console.log(search);
+		// }
+		// );
 	}, [search]);
 	const filterPosts = (search, query) => {
-		if (!query) {
-			return search;
-		}
-		return search.filter((el) => {
+		// if (!query) {
+		// 	return <div>Please enter a search term.</div>;
+		// }
+		let searchResults = search.filter((el) => {
 			const elName = el.properties.name.toLowerCase();
+			if (query === "") {
+				return null;
+			}
 			if (elName.includes(query)) {
 				return el;
 			}
 		});
+		if (searchResults.length > 10) {
+			return searchResults.slice(0, 9);
+		}
+		return searchResults;
 	};
 	return (
 		<>
@@ -41,6 +55,8 @@ const SearchResults = () => {
 							);
 						})}
 					</ul>
+				) : search === "" ? (
+					<div></div>
 				) : (
 					<div>Loading...</div>
 				)}
@@ -50,9 +66,12 @@ const SearchResults = () => {
 };
 
 const Wrapper = styled.div`
-	max-height: 50%;
+	position: absolute;
+	/* max-height: 10%; */
 	display: flex;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
+	background-color: red;
+    z-index: 2;
 `;
 
 export default SearchResults;

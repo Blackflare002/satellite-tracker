@@ -8,9 +8,10 @@ import GlobalStyles from "./components/GlobalStyles";
 import styled from "styled-components";
 import Search from "./components/Search";
 import SearchResults from "./components/SearchResults";
+import ResultsPage from "./components/ResultsPage";
 
 function App() {
-	const { sats } = useContext(SatsContext);
+	const { sats, allSats, searchResults, search } = useContext(SatsContext);
 	return (
 		<>
 			<BrowserRouter>
@@ -18,13 +19,18 @@ function App() {
 				<Main>
 					<Header />
 					<Search />
-					<SearchResults />
+					{/* {allSats && <SearchResults />} */}
 					<Routes>
 						<Route exact path="/" element={<Home />} />
 						<Route
 							exact
 							path="/details"
 							element={sats && <Details />}
+						/>
+						<Route
+							exact
+							path="/results"
+							element={search && <ResultsPage />}
 						/>
 					</Routes>
 				</Main>
@@ -37,8 +43,7 @@ const Main = styled.div`
 	background-color: #2c3233;
 	color: var(--offwhite);
 	font-family: sans-serif;
-	height: fit-content;
-	max-height: 100vh;
+	height: 100vh;
 `;
 
 export default App;

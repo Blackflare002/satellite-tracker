@@ -11,15 +11,17 @@ import SearchResults from "./components/SearchResults";
 import ResultsPage from "./components/ResultsPage";
 
 function App() {
-	const { sats, allSats, searchResults, search } = useContext(SatsContext);
+	const { sats, allSats, searchResults, search } =
+		useContext(SatsContext);
 	return (
 		<>
 			<BrowserRouter>
 				<GlobalStyles />
 				<Main>
 					<Header />
-					<Search />
-					{/* {allSats && <SearchResults />} */}
+					<SearchBox>
+						<Search />
+					</SearchBox>
 					<Routes>
 						<Route exact path="/" element={<Home />} />
 						<Route
@@ -39,11 +41,19 @@ function App() {
 	);
 }
 
+const SearchBox = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 15px;
+	position: relative;
+	right: 75px;
+`;
+
 const Main = styled.div`
 	background-color: #2c3233;
 	color: var(--offwhite);
 	font-family: sans-serif;
-	height: 100vh;
 `;
 
 export default App;

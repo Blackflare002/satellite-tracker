@@ -26,41 +26,51 @@ const Search = () => {
 	return (
 		<Wrapper>
 			<form>
-				<label htmlFor="header-search">
-					<span>Search Satellites</span>
-				</label>
-				<StyledInput
-					onChange={handleChange}
-					placeholder="Search for sats!"
-					type="text"
-					id="header-search"
-					name="s"
-					// focus={focus}
-					onFocus={() => setFocus(true)}
-					onBlur={() => setFocus(false)}
-				/>
-				<button
-					type="submit"
-					onClick={(ev) => {
-						// setSearchResults(filterPosts(allSats, search))
-						ev.preventDefault();
-						setRefresh(!refresh);
-						navigate("/results", { replace: true });
-					}}
-				>
-					Search
-				</button>
+				<InnerBox>
+					<label htmlFor="header-search">
+						<span>Search Satellites</span>
+					</label>
+					<StyledInput
+						onChange={handleChange}
+						placeholder="Search for sats!"
+						type="text"
+						id="header-search"
+						name="s"
+						// focus={focus}
+						onFocus={() => setFocus(true)}
+						onBlur={() => setFocus(false)}
+					/>
+					<button
+						type="submit"
+						onClick={(ev) => {
+							// setSearchResults(filterPosts(allSats, search))
+							ev.preventDefault();
+							setRefresh(!refresh);
+							navigate("/results", { replace: true });
+						}}
+					>
+						Search
+					</button>
+				</InnerBox>
 			</form>
 			{focus && allSats && <SearchResults />}
 		</Wrapper>
 	);
 };
 
+const InnerBox = styled.div`
+	display: flex;
+	gap: 5px;
+	align-items: baseline;
+`;
+
 const StyledInput = styled.input``;
 
 const Wrapper = styled.div`
 	position: relative;
 	left: 50px;
+	display: flex;
+	gap: 10px;
 `;
 
 export default Search;

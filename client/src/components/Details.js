@@ -9,6 +9,11 @@ import {
 import SatsContext from "./SatsContext";
 import styled from "styled-components";
 import Comments from "./Comments";
+import {
+	GoogleMap,
+	LoadScript,
+	Marker,
+} from "@react-google-maps/api";
 
 //The first number is always the latitude and the second is the longitude.
 //MTL 45.507544685873405, -73.6357024529298
@@ -86,6 +91,15 @@ const Details = () => {
 	let randomIcon = icons[randomNumber];
 	// console.log(randomIcon);
 
+	const containerStyle = {
+		width: "400px",
+		height: "400px",
+	};
+	const center = {
+		lat: lat,
+		lng: long,
+	};
+
 	if (!name || !norad || !sats) {
 		return <div>Loading...</div>;
 	}
@@ -101,13 +115,24 @@ const Details = () => {
 				<p>Latitude: {lat ? lat.toFixed(3) : "N/A"}</p>
 				<p>Longitude: {long ? long.toFixed(3) : "N/A"}</p>
 				{long && (
-					<a href={`https://maps.google.com/maps?q=${long},${lat}`}>
+					<a
+						href={`https://maps.google.com/maps?q=${lat},${long}&z=4`}
+					>
 						Link
 					</a>
 				)}
 				<button onClick={() => setUpdate(!update)}>
 					Update Coordinates
 				</button>
+				<LoadScript googleMapsApiKey="AIzaSyDhtNwzYNDDMOROyMq4L0i1c_yJ8jjwfYk">
+					<GoogleMap
+						mapContainerStyle={containerStyle}
+						center={center}
+						zoom={4}
+					>
+						<Marker position={center} />
+					</GoogleMap>
+				</LoadScript>
 			</ContentWrapper>
 			<form>
 				<FormWrapper>
@@ -144,14 +169,15 @@ const CommentsBox = styled.div`
 	flex-direction: column;
 	gap: 15px;
 	margin-top: 20px;
-	/* height: fit-content; */
+	/* margin-bottom: 20px; */
+	/* border: 5px solid red; */
 `;
 
 const FormWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 4px solid darkblue;
+	border: 3px solid darkblue;
 	width: fit-content;
 	margin-left: auto;
 	margin-right: auto;
@@ -177,11 +203,15 @@ const ContentWrapper = styled.div`
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	margin: 20px;
+	/* margin: 20px; */
 	padding: 10px;
 	gap: 10px;
-	border: 5px solid black;
-	max-height: 100vh;
+	/* border: 2px solid black; */
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+	/* max-height: 100vh; */
 `;
 
 const IconWrapper = styled.div`

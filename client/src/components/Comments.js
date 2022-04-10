@@ -21,20 +21,24 @@ const Comments = () => {
 				comments.map((el) => {
 					return (
 						<div key={Math.floor(Math.random() * 800813555)}>
-							<CommentContainer>
-								<UserContainer>
-									<div>{el.user}</div>
-								</UserContainer>
-								<MessageContainer>
-									<div>{el.message}</div>
-								</MessageContainer>
-							</CommentContainer>
+							{/* <CommentBox> */}
+								<CommentContainer>
+									<UserContainer>
+										<div>{el.user}</div>
+									</UserContainer>
+									<MessageContainer>
+										<div>{el.message}</div>
+									</MessageContainer>
+								</CommentContainer>
+							{/* </CommentBox> */}
 						</div>
 					);
 				})}
 		</>
 	);
 };
+
+
 
 const MessageContainer = styled.div`
 	display: flex;

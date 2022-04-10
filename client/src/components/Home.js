@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	height: 100vh;
+	height: 90vh;
 	overflow: clip;
 `;
 

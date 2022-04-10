@@ -15,8 +15,11 @@ import {
 	Marker,
 } from "@react-google-maps/api";
 
+console.log(process.env.REACT_APP_GOOGLE_API_KEY);
+
 //The first number is always the latitude and the second is the longitude.
 //MTL 45.507544685873405, -73.6357024529298
+//when defining coordinates the convention used is longitude, latitude(!!!!!)
 
 const Details = () => {
 	const [name, setName] = useState(null);
@@ -43,8 +46,8 @@ const Details = () => {
 				// );
 				setName(data.properties.name);
 				setNorad(data.properties.norad_id);
-				setLat(data.geometry ? data.geometry.coordinates[0] : null);
-				setLong(data.geometry ? data.geometry.coordinates[1] : null);
+				setLat(data.geometry ? data.geometry.coordinates[1] : null);
+				setLong(data.geometry ? data.geometry.coordinates[0] : null);
 			});
 	}, [update]);
 

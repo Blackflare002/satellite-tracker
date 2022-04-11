@@ -15,7 +15,7 @@ import {
 	Marker,
 } from "@react-google-maps/api";
 
-console.log(process.env.REACT_APP_GOOGLE_API_KEY);
+// console.log(process.env.REACT_APP_GOOGLE_API_KEY);
 
 //The first number is always the latitude and the second is the longitude.
 //MTL 45.507544685873405, -73.6357024529298
@@ -107,7 +107,7 @@ const Details = () => {
 		return <div>Loading...</div>;
 	}
 	return (
-		<>
+		<Container>
 			<ContentWrapper>
 				<IconWrapper>
 					{randomIcon ? <div>{randomIcon}</div> : <FaSatellite />}
@@ -161,9 +161,14 @@ const Details = () => {
 			<CommentsBox>
 				<Comments key={Math.floor(Math.random() * 99999)} />
 			</CommentsBox>
-		</>
+		</Container>
 	);
 };
+
+const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
 
 const CommentsBox = styled.div`
 	display: flex;
@@ -172,7 +177,7 @@ const CommentsBox = styled.div`
 	flex-direction: column;
 	gap: 15px;
 	margin-top: 20px;
-	/* margin-bottom: 20px; */
+	margin-bottom: 20px;
 	/* border: 5px solid red; */
 `;
 

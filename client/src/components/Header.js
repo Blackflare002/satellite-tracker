@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import SatsContext from "./SatsContext";
+import { useContext } from "react";
 
 const Header = () => {
+	const { defaultValue, setDefaultValue } = useContext(SatsContext);
 	return (
 		<HeaderWrapper>
-			<StyledLink to={"/"}>
+			<StyledLink
+				to={"/"}
+				onClick={() => setDefaultValue(!defaultValue)}
+			>
 				<HeaderText>SAT-TRACK</HeaderText>
 			</StyledLink>
 		</HeaderWrapper>

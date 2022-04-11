@@ -16,6 +16,7 @@ export const SatsContextProvider = ({ children }) => {
 	const [allSats, setAllSats] = useState(null);
 	const [searchResults, setSearchResults] = useState(null);
 	const [refresh, setRefresh] = useState(false);
+	const [defaultValue, setDefaultValue] = useState(false);
 
 	useEffect(() => {
 		fetch("https://api.spectator.earth/satellite/")
@@ -39,7 +40,7 @@ export const SatsContextProvider = ({ children }) => {
 				// 	data.geometry.coordinates[1]
 				// );
 			});
-	}, []);
+	}, [defaultValue]);
 	// console.log(sats ? sats.id : null);
 	//
 	return (
@@ -56,6 +57,8 @@ export const SatsContextProvider = ({ children }) => {
 				setSearchResults,
 				refresh,
 				setRefresh,
+				defaultValue,
+				setDefaultValue,
 			}}
 		>
 			{children}

@@ -54,6 +54,9 @@ const Main = styled.div`
 	background-color: #2c3233;
 	color: var(--offwhite);
 	font-family: sans-serif;
+	min-height: 100vh;
+	height: 100%;
+	/* overflow: clip; */
 `;
 
 export default App;

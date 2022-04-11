@@ -35,8 +35,8 @@ const Wrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	height: 90vh;
-	overflow: clip;
+	height: 80vh;
+	/* overflow: clip; */
 `;
 
 const rotation = keyframes`

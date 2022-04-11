@@ -13,15 +13,21 @@ const Search = () => {
 		setSearchResults,
 		refresh,
 		setRefresh,
+		focus,
+		setFocus,
 	} = useContext(SatsContext);
+
 	const handleChange = (e) => {
 		e.preventDefault();
+		console.log(search);
+		setFocus(true);
 		console.log(document.getElementById("header-search").value);
 		setSearch(document.getElementById("header-search").value);
 	};
+
 	let navigate = useNavigate();
-	console.log(searchResults);
-	const [focus, setFocus] = useState(false);
+
+	// console.log(searchResults);
 
 	return (
 		<Wrapper>
@@ -36,14 +42,12 @@ const Search = () => {
 						type="text"
 						id="header-search"
 						name="s"
-						// focus={focus}
-						onFocus={() => setFocus(true)}
-						onBlur={() => setFocus(false)}
+						onFocus={() => true}
+						// onBlur={() => setFocus(false)}
 					/>
 					<button
 						type="submit"
 						onClick={(ev) => {
-							// setSearchResults(filterPosts(allSats, search))
 							ev.preventDefault();
 							setRefresh(!refresh);
 							navigate("/results", { replace: true });

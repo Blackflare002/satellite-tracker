@@ -4,6 +4,10 @@ export default createGlobalStyle`
 :root {
     --lighterGrey: #515B63;
     --offwhite: #f8f8ff;
+	--spaceGrey: #2c3233;
+	--trulyDarkGrey: #23252a;
+	--lightBlueGrey: #828696;
+	--paleBlueGrey: #858f9b;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 

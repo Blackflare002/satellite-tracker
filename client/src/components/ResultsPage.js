@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import SatsContext from "./SatsContext";
 
 const ResultsPage = () => {
@@ -21,22 +22,48 @@ const ResultsPage = () => {
 		return searchResults;
 	};
 
-	console.log("SATS: ", sats);
+	// console.log("SATS: ", sats);
 	return (
-		<div>
-			{results &&
-				results.map((el) => {
-					return (
-						<div>
-							<Link to={"/details"} onClick={() => setSats(el)}>
-								{console.log("EL: ", el)}
-								<div>{el.properties.name}</div>
-							</Link>
-						</div>
-					);
-				})}
-		</div>
+		<Margins>
+			<Wrapper>
+				{results &&
+					results.map((el) => {
+						return (
+							<div>
+								<StyledLink
+									to={"/details"}
+									onClick={() => setSats(el)}
+								>
+									{/* {console.log("EL: ", el)} */}
+									<div>{el.properties.name}</div>
+								</StyledLink>
+							</div>
+						);
+					})}
+			</Wrapper>
+		</Margins>
 	);
 };
+
+const Margins = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+const Wrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	/* border: 2px solid red; */
+`;
+
+const StyledLink = styled(Link)`
+	text-decoration: none;
+	color: var(--offwhite);
+`;
 
 export default ResultsPage;

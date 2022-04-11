@@ -74,12 +74,9 @@ const Details = () => {
 				setUsername("");
 				setCommentValue("");
 			});
-		// .catch(() => {
-		// 	setStatus("Error");
-		// })
 	};
 
-	console.log(sats.id);
+	// console.log(sats.id);
 
 	const icons = [
 		<FaSatellite />,

@@ -22,7 +22,7 @@ const { postComment, getComments, getUsers, signIn } = require("./handlers");
 app.post("/details", postComment);
 app.get("/comments/:id", getComments);
 app.get("/get-users", getUsers);
-app.post("sign-in", signIn);
+app.post("/sign-in", signIn);
 
 // this is our catch all endpoint.
 app.get("*", (req, res) => {

@@ -9,6 +9,7 @@ import styled from "styled-components";
 import Search from "./components/Search";
 import SearchResults from "./components/SearchResults";
 import ResultsPage from "./components/ResultsPage";
+import { SignIn } from "./components/SignIn";
 
 function App() {
 	const { sats, allSats, searchResults, search } =
@@ -24,6 +25,7 @@ function App() {
 					</SearchBox>
 					<Routes>
 						<Route exact path="/" element={<Home />} />
+						<Route exact path="/sign-in" element={<SignIn />} />
 						<Route
 							exact
 							path="/details"

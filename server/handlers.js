@@ -30,14 +30,14 @@ const getUsers = async (req, res) => {
 // console.log(users);
 
 const signIn = async (req, res) => {
+	console.log(req.body);
 	const client = new MongoClient(MONGO_URI, options);
-
 	await client.connect();
 	const db = client.db("Satellite-Comments");
 	let users = await db.collection("users").find().toArray();
 	let currentUser = null;
 	users.forEach((el) => {
-		if (req.body.username.toLowerCase() === el.name.toLowerCase()) {
+		if (req.body.user.toLowerCase() === el.name.toLowerCase()) {
 			currentUser = el;
 		}
 	});

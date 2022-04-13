@@ -2,20 +2,37 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import SatsContext from "./SatsContext";
 import { useContext } from "react";
+import UserInfoContext from "./UserInfoContext";
 
 const Header = () => {
 	const { defaultValue, setDefaultValue } = useContext(SatsContext);
+	const { userInfo } = useContext(UserInfoContext);
 	return (
 		<HeaderWrapper>
-			<StyledLink
-				to={"/"}
-				onClick={() => setDefaultValue(!defaultValue)}
-			>
-				<HeaderText>SAT-TRACK</HeaderText>
-			</StyledLink>
+			<InnerWrapper>
+				<StyledLink
+					to={"/"}
+					onClick={() => setDefaultValue(!defaultValue)}
+				>
+					<HeaderText>SAT-TRACK</HeaderText>
+				</StyledLink>
+				{userInfo ? (
+					<div>Hi, {userInfo}!</div>
+				) : (
+					<StyledLink to={"/sign-in"}>
+						<HeaderText>Sign In</HeaderText>
+					</StyledLink>
+				)}
+			</InnerWrapper>
 		</HeaderWrapper>
 	);
 };
+
+const InnerWrapper = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+`;
 
 const StyledLink = styled(Link)`
 	text-decoration: none;

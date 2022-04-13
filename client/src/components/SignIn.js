@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserInfoContext from "./UserInfoContext";
 
 export const SignIn = () => {
 	const [user, setUser] = useState("");
 	const [loggedIn, setLoggedIn] = useState(false);
+
+	const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
 	const handleChange = (value) => {
 		setUser(value);
@@ -30,6 +33,7 @@ export const SignIn = () => {
 					console.log("user: ", user);
 					setLoggedIn(true);
 					sessionStorage.setItem("user", JSON.stringify(user));
+					setUserInfo(user);
 					navigate("/", { replace: true });
 				} else {
 					console.log("error");

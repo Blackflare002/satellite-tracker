@@ -34,7 +34,7 @@ const Search = () => {
 			<form>
 				<InnerBox>
 					<label htmlFor="header-search">
-						<span>Search Satellites</span>
+						<span>Search Satellites: </span>
 					</label>
 					<StyledInput
 						onChange={handleChange}

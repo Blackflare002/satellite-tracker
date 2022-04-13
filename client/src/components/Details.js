@@ -14,6 +14,7 @@ import {
 	LoadScript,
 	Marker,
 } from "@react-google-maps/api";
+import UserInfoContext from "./UserInfoContext";
 
 // console.log(process.env.REACT_APP_GOOGLE_API_KEY);
 
@@ -28,9 +29,10 @@ const Details = () => {
 	const [long, setLong] = useState(null);
 	const [update, setUpdate] = useState(false);
 	const [commentValue, setCommentValue] = useState("");
-	const [username, setUsername] = useState("");
+	// const [username, setUsername] = useState("");
 
 	const { sats, setSats, theNumber } = useContext(SatsContext);
+	const { userInfo } = useContext(UserInfoContext);
 
 	useEffect(() => {
 		fetch(`https://api.spectator.earth/satellite/${sats.id}/`)
@@ -54,15 +56,15 @@ const Details = () => {
 	const writeComment = (ev) => {
 		setCommentValue(ev.target.value);
 	};
-	const writeUsername = (ev) => {
-		setUsername(ev.target.value);
-	};
+	// const writeUsername = (ev) => {
+	// 	setUsername(ev.target.value);
+	// };
 	const sendComment = (ev) => {
 		ev.preventDefault();
 		fetch("/details", {
 			body: JSON.stringify({
 				message: commentValue,
-				user: username,
+				user: userInfo,
 				sat: sats.id,
 			}),
 			headers: { "Content-Type": "application/json" },
@@ -71,7 +73,7 @@ const Details = () => {
 			.then((res) => res.json())
 			.then((res) => {
 				console.log(res);
-				setUsername("");
+				// setUsername("");
 				setCommentValue("");
 			});
 	};
@@ -138,11 +140,12 @@ const Details = () => {
 				<FormWrapper>
 					<FormDiv>
 						<div>
-							<input
+							{/* <input
 								placeholder="Enter a username!"
 								onChange={writeUsername}
 								value={username}
-							/>
+							/> */}
+							<div>Write your comment here, {userInfo}!</div>
 						</div>
 						<StyledTextarea
 							placeholder="Write a comment!"
@@ -182,7 +185,7 @@ const FormWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 3px solid darkblue;
+	border: 2px solid var(--offwhite);
 	width: fit-content;
 	margin-left: auto;
 	margin-right: auto;

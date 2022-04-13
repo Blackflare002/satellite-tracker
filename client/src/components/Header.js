@@ -17,7 +17,7 @@ const Header = () => {
 					<HeaderText>SAT-TRACK</HeaderText>
 				</StyledLink>
 				{userInfo ? (
-					<div>Hi, {userInfo}!</div>
+					<HeaderText>Hi, {userInfo}!</HeaderText>
 				) : (
 					<StyledLink to={"/sign-in"}>
 						<HeaderText>Sign In</HeaderText>
@@ -47,10 +47,11 @@ const HeaderWrapper = styled.div`
 `;
 
 const HeaderText = styled.div`
-	/* text-decoration: none; */
 	color: var(--offwhite);
 	font-size: large;
 	font-weight: bold;
+	padding-left: 10px;
+	padding-right: 10px;
 `;
 
 export default Header;

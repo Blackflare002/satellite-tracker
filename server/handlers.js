@@ -6,6 +6,7 @@ const options = {
 	useUnifiedTopology: true,
 };
 const { v4: uuidv4 } = require("uuid");
+const { DateTime } = require("luxon");
 
 // let users = null;
 const getUsers = async (req, res) => {
@@ -57,9 +58,14 @@ const signIn = async (req, res) => {
 };
 
 const postComment = async (req, res) => {
+	const dt = DateTime.local().toLocaleString(DateTime.DATETIME_MED);
 	const client = new MongoClient(MONGO_URI, options);
 	console.log(req.body);
-	let newReq = { ...req.body, _id: uuidv4() };
+	let newReq = {
+		...req.body,
+		_id: uuidv4(),
+		date: dt,
+	};
 	try {
 		await client.connect();
 		const db = client.db("Satellite-Comments");
@@ -86,15 +92,10 @@ const getComments = async (req, res) => {
 	try {
 		await client.connect();
 		const db = client.db("Satellite-Comments");
-		// let query = { sat: id };
 		let comments = await db
 			.collection("comments")
 			.find({ sat: Number(id) })
 			.toArray();
-		// satelliteComments = comments.filter((el) => {
-		// 	return el.sat === Number(id);
-		// });
-		// console.log(satelliteComments);
 		res.status(200).json({
 			status: 200,
 			message: "This is the server response.",

@@ -22,14 +22,17 @@ const Comments = () => {
 					return (
 						<div key={Math.floor(Math.random() * 800813555)}>
 							{/* <CommentBox> */}
-								<CommentContainer>
-									<UserContainer>
-										<div>{el.user}</div>
-									</UserContainer>
-									<MessageContainer>
-										<div>{el.message}</div>
-									</MessageContainer>
-								</CommentContainer>
+							<CommentContainer>
+								<UserContainer>
+									<div>{el.user}</div>
+								</UserContainer>
+								<MessageContainer>
+									<div>{el.message}</div>
+								</MessageContainer>
+								<DateContainer>
+									{el.date && <div>{el.date}</div>}
+								</DateContainer>
+							</CommentContainer>
 							{/* </CommentBox> */}
 						</div>
 					);
@@ -38,7 +41,15 @@ const Comments = () => {
 	);
 };
 
-
+const DateContainer = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	position: relative;
+	top: 20px;
+	color: var(--trulyDarkGrey);
+	font-size: small;
+`;
 
 const MessageContainer = styled.div`
 	display: flex;

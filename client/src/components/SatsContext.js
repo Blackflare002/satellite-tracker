@@ -18,6 +18,7 @@ export const SatsContextProvider = ({ children }) => {
 	const [refresh, setRefresh] = useState(false);
 	const [defaultValue, setDefaultValue] = useState(false);
 	const [focus, setFocus] = useState(false);
+	const [update, setUpdate] = useState(false);
 
 	useEffect(() => {
 		fetch("https://api.spectator.earth/satellite/")
@@ -62,6 +63,8 @@ export const SatsContextProvider = ({ children }) => {
 				setDefaultValue,
 				focus,
 				setFocus,
+				update,
+				setUpdate,
 			}}
 		>
 			{children}

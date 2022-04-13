@@ -58,7 +58,7 @@ const signIn = async (req, res) => {
 };
 
 const postComment = async (req, res) => {
-	const dt = DateTime.local().toLocaleString(DateTime.DATETIME_MED);
+	const dt = DateTime.local();
 	const client = new MongoClient(MONGO_URI, options);
 	console.log(req.body);
 	let newReq = {
@@ -95,6 +95,7 @@ const getComments = async (req, res) => {
 		let comments = await db
 			.collection("comments")
 			.find({ sat: Number(id) })
+			.sort({ date: 1 })
 			.toArray();
 		res.status(200).json({
 			status: 200,

@@ -27,11 +27,11 @@ const Details = () => {
 	const [norad, setNorad] = useState(null);
 	const [lat, setLat] = useState(null);
 	const [long, setLong] = useState(null);
-	const [update, setUpdate] = useState(false);
 	const [commentValue, setCommentValue] = useState("");
 	// const [username, setUsername] = useState("");
 
-	const { sats, setSats, theNumber } = useContext(SatsContext);
+	const { sats, setSats, theNumber, update, setUpdate } =
+		useContext(SatsContext);
 	const { userInfo } = useContext(UserInfoContext);
 
 	useEffect(() => {
@@ -139,22 +139,28 @@ const Details = () => {
 			<form>
 				<FormWrapper>
 					<FormDiv>
-						<div>
-							{/* <input
+						{userInfo ? (
+							<>
+								<div>
+									{/* <input
 								placeholder="Enter a username!"
 								onChange={writeUsername}
 								value={username}
 							/> */}
-							<div>Write your comment here, {userInfo}!</div>
-						</div>
-						<StyledTextarea
-							placeholder="Write a comment!"
-							onChange={writeComment}
-							value={commentValue}
-						/>
-						<div>
-							<button onClick={(ev) => sendComment(ev)}>Post!</button>
-						</div>
+									<div>Write your comment here, {userInfo}!</div>
+								</div>
+								<StyledTextarea
+									placeholder="Write a comment!"
+									onChange={writeComment}
+									value={commentValue}
+								/>
+								<button onClick={(ev) => sendComment(ev)}>
+									Post!
+								</button>
+							</>
+						) : (
+							<div>You must sign in before commenting!</div>
+						)}
 					</FormDiv>
 				</FormWrapper>
 			</form>

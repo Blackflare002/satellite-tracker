@@ -14,6 +14,8 @@ const SearchResults = () => {
 		setSats,
 		focus,
 		setFocus,
+		update,
+		setUpdate,
 	} = useContext(SatsContext);
 
 	useEffect(() => {
@@ -54,6 +56,7 @@ const SearchResults = () => {
 											onClick={() => {
 												setSats(el);
 												setFocus(false);
+												setUpdate(!update);
 											}}
 										>
 											<div>{el.properties.name}</div>

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import SatsContext from "./SatsContext";
 import { DateTime } from "luxon";
+import { CommentsBox } from "./Details";
 
 const Comments = () => {
 	const { sats } = useContext(SatsContext);
@@ -13,7 +14,7 @@ const Comments = () => {
 	}, []);
 
 	return (
-		<>
+		<CommentsBox>
 			{comments &&
 				comments.map((el) => {
 					let date = el.date;
@@ -40,7 +41,7 @@ const Comments = () => {
 						</div>
 					);
 				})}
-		</>
+		</CommentsBox>
 	);
 };
 

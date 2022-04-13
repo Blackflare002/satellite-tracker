@@ -10,6 +10,7 @@ import Search from "./components/Search";
 import SearchResults from "./components/SearchResults";
 import ResultsPage from "./components/ResultsPage";
 import { SignIn } from "./components/SignIn";
+import Comments from "./components/Comments";
 
 function App() {
 	const { sats, allSats, searchResults, search } =
@@ -29,7 +30,14 @@ function App() {
 						<Route
 							exact
 							path="/details"
-							element={sats && <Details />}
+							element={
+								sats && (
+									<>
+										<Details />
+										<Comments />
+									</>
+								)
+							}
 						/>
 						<Route
 							exact

@@ -95,7 +95,7 @@ const getComments = async (req, res) => {
 		let comments = await db
 			.collection("comments")
 			.find({ sat: Number(id) })
-			.sort({ date: 1 })
+			.sort({ date: -1 })
 			.toArray();
 		res.status(200).json({
 			status: 200,

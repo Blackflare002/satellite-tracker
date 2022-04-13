@@ -53,8 +53,8 @@ const Details = () => {
 			});
 	}, [update]);
 
-	const writeComment = (ev) => {
-		setCommentValue(ev.target.value);
+	const writeComment = (eve) => {
+		setCommentValue(eve.target.value);
 	};
 	// const writeUsername = (ev) => {
 	// 	setUsername(ev.target.value);
@@ -164,9 +164,6 @@ const Details = () => {
 					</FormDiv>
 				</FormWrapper>
 			</form>
-			<CommentsBox>
-				<Comments key={Math.floor(Math.random() * 99999)} />
-			</CommentsBox>
 		</Container>
 	);
 };
@@ -176,7 +173,7 @@ const Container = styled.div`
 	flex-direction: column;
 `;
 
-const CommentsBox = styled.div`
+export const CommentsBox = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;

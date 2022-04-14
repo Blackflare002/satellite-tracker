@@ -11,7 +11,7 @@ const Comments = () => {
 		fetch(`/comments/${sats.id}`)
 			.then((res) => res.json())
 			.then((info) => setComments(info.data));
-	}, []);
+	}, [comments]);
 
 	return (
 		<TopLevelBox>
@@ -80,7 +80,7 @@ const UserContainer = styled.div`
 
 const CommentContainer = styled.div`
 	min-height: fit-content;
-	max-height: 100px;
+	max-height: 200px;
 	width: 400px;
 	background-color: grey;
 	border-radius: 10px;

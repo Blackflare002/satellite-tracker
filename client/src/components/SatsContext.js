@@ -24,8 +24,8 @@ export const SatsContextProvider = ({ children }) => {
 		fetch("https://api.spectator.earth/satellite/")
 			.then((res) => res.json())
 			.then((data) => {
-				// setSats(data.features[theNumber]);
-				setSats(data.features.filter((el) => el.id === 16)[0]);
+				setSats(data.features[theNumber]);
+				// setSats(data.features.filter((el) => el.id === 16)[0]);
 				setAllSats(data.features);
 				//
 				// console.log(sats.id);

@@ -6,8 +6,9 @@ import {
 	GiDefenseSatellite,
 	GiSatelliteCommunication,
 } from "react-icons/gi";
+import { ImSpinner9 } from "react-icons/im";
 import SatsContext from "./SatsContext";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Comments from "./Comments";
 import {
 	GoogleMap,
@@ -103,7 +104,15 @@ const Details = () => {
 	};
 
 	if (!name || !norad || !sats) {
-		return <div>Loading...</div>;
+		return (
+			<Container>
+				<LoadingWrapper>
+					<div>
+						Loading... <StyledImSpinner9 />
+					</div>
+				</LoadingWrapper>
+			</Container>
+		);
 	}
 	return (
 		<Container>
@@ -159,7 +168,9 @@ const Details = () => {
 								</button>
 							</>
 						) : (
-							<div>You must sign in before commenting!</div>
+							<StyledLink to={"/sign-in"}>
+								You must sign in before commenting!
+							</StyledLink>
 						)}
 					</FormDiv>
 				</FormWrapper>
@@ -167,6 +178,33 @@ const Details = () => {
 		</Container>
 	);
 };
+
+const StyledLink = styled(Link)`
+	text-decoration: none;
+	color: var(--offwhite);
+`;
+
+const LoadingWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	top: 50px;
+`;
+
+const rotation = keyframes`
+from {
+	transform: rotate(0deg);
+}
+to {
+	transform: rotate(360deg);
+}
+`;
+
+const StyledImSpinner9 = styled(ImSpinner9)`
+	animation: ${rotation} 1s linear infinite;
+	font-size: xx-large;
+`;
 
 const Container = styled.div`
 	display: flex;

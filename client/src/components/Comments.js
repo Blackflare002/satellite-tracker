@@ -14,36 +14,43 @@ const Comments = () => {
 	}, []);
 
 	return (
-		<CommentsBox>
-			{comments &&
-				comments.map((el) => {
-					let date = el.date;
-					let newFormat = { ...DateTime.DATETIME_MED };
-					// console.log(DateTime.fromISO(date));
-					let date2 = DateTime.fromISO(date);
-					// console.log(date2.toLocaleString(newFormat));
-					let properDate = date2.toLocaleString(newFormat);
-					return (
-						<div key={Math.floor(Math.random() * 800813555)}>
-							<CommentContainer>
-								<UserContainer>
-									<div>{el.user}</div>
-								</UserContainer>
-								<MessageContainer>
-									<div>{el.message}</div>
-								</MessageContainer>
-								<DateContainer>
-									{/* {console.log("DATE: ", date)} */}
-									{/* {console.log("EL.DATE: ", el.date)} */}
-									<div>{properDate}</div>
-								</DateContainer>
-							</CommentContainer>
-						</div>
-					);
-				})}
-		</CommentsBox>
+		<TopLevelBox>
+			<CommentsBox>
+				{comments &&
+					comments.map((el) => {
+						let date = el.date;
+						let newFormat = { ...DateTime.DATETIME_MED };
+						// console.log(DateTime.fromISO(date));
+						let date2 = DateTime.fromISO(date);
+						// console.log(date2.toLocaleString(newFormat));
+						let properDate = date2.toLocaleString(newFormat);
+						return (
+							<div key={Math.floor(Math.random() * 800813555)}>
+								<CommentContainer>
+									<UserContainer>
+										<div>{el.user}</div>
+									</UserContainer>
+									<MessageContainer>
+										<div>{el.message}</div>
+									</MessageContainer>
+									<DateContainer>
+										{/* {console.log("DATE: ", date)} */}
+										{/* {console.log("EL.DATE: ", el.date)} */}
+										<div>{properDate}</div>
+									</DateContainer>
+								</CommentContainer>
+							</div>
+						);
+					})}
+			</CommentsBox>
+		</TopLevelBox>
 	);
 };
+
+const TopLevelBox = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
 
 const DateContainer = styled.div`
 	display: flex;

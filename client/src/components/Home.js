@@ -1,14 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
+import { GiMovementSensor } from "react-icons/gi";
 import SatsContext from "./SatsContext";
 import styled, { keyframes } from "styled-components";
 
 const Home = () => {
 	const { sats, setSats, theNumber } = useContext(SatsContext);
-	// const { id, properties } = sats
-	// 	? sats
-	// 	: { id: null, properties: null };
 
 	// console.log(sats);
 	// console.log(id ? id : null);
@@ -25,9 +23,12 @@ const Home = () => {
 			</Wrapper>
 		</>
 	) : (
-		<div>Scanning for satellites...</div>
+		<Wrapper>
+			<div>
+				Scanning for satellites... <StyledGiMovementSensor />
+			</div>
+		</Wrapper>
 	);
-	// return (<div></div>)
 };
 
 const Wrapper = styled.div`
@@ -55,6 +56,11 @@ from {
 to {
 	color: lightblue;
 }
+`;
+
+const StyledGiMovementSensor = styled(GiMovementSensor)`
+	animation: ${rotation} 1s linear infinite;
+	font-size: xx-large;
 `;
 
 const StyledEarth = styled(IoEarthOutline)`

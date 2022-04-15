@@ -182,7 +182,8 @@ const Details = () => {
 							</>
 						) : (
 							<StyledLink to={"/sign-in"}>
-								You must sign in before commenting!
+								You must <SpecialSpan>sign in</SpecialSpan> before
+								commenting!
 							</StyledLink>
 						)}
 					</FormDiv>
@@ -191,6 +192,11 @@ const Details = () => {
 		</Container>
 	);
 };
+
+const SpecialSpan = styled.span`
+	color: royalblue;
+	font-weight: bold;
+`;
 
 const StyledA = styled.a`
 	text-decoration: none;

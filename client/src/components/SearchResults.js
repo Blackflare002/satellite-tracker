@@ -16,6 +16,8 @@ const SearchResults = () => {
 		setFocus,
 		update,
 		setUpdate,
+		newComment,
+		setNewComment,
 	} = useContext(SatsContext);
 
 	useEffect(() => {
@@ -43,7 +45,7 @@ const SearchResults = () => {
 
 	return (
 		<>
-			{searchResults && searchResults.length > 0 ? (
+			{focus && searchResults && searchResults.length > 0 ? (
 				<ul>
 					<Wrapper>
 						<LinkContainer>
@@ -57,6 +59,7 @@ const SearchResults = () => {
 												setSats(el);
 												setFocus(false);
 												setUpdate(!update);
+												setNewComment(!newComment);
 											}}
 										>
 											<div>{el.properties.name}</div>

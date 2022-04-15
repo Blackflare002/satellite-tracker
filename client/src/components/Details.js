@@ -140,18 +140,26 @@ const Details = () => {
 						Link
 					</a>
 				)}
-				<TrueStyledButton onClick={() => setUpdate(!update)}>
-					Update Coordinates
-				</TrueStyledButton>
-				<LoadScript googleMapsApiKey="AIzaSyDhtNwzYNDDMOROyMq4L0i1c_yJ8jjwfYk">
-					<GoogleMap
-						mapContainerStyle={containerStyle}
-						center={center}
-						zoom={4}
-					>
-						<Marker position={center} />
-					</GoogleMap>
-				</LoadScript>
+				{long ? (
+					<>
+						<TrueStyledButton onClick={() => setUpdate(!update)}>
+							Update Coordinates
+						</TrueStyledButton>
+						<LoadScript googleMapsApiKey="AIzaSyDhtNwzYNDDMOROyMq4L0i1c_yJ8jjwfYk">
+							<GoogleMap
+								mapContainerStyle={containerStyle}
+								center={center}
+								zoom={4}
+							>
+								<Marker position={center} />
+							</GoogleMap>
+						</LoadScript>
+					</>
+				) : (
+					<NoTrackBox>
+						<div>This sat can't be tracked!</div>
+					</NoTrackBox>
+				)}
 			</ContentWrapper>
 			<form>
 				<FormWrapper>
@@ -191,6 +199,13 @@ const Details = () => {
 		</Container>
 	);
 };
+
+const NoTrackBox = styled.div`
+	border: solid 2px red;
+	width: fit-content;
+	padding: 20px;
+	margin-top: 20px;
+`;
 
 const StyledLink = styled(Link)`
 	text-decoration: none;

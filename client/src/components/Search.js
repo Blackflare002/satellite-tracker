@@ -44,13 +44,14 @@ const Search = () => {
 						id="header-search"
 						name="s"
 						onFocus={() => true}
-						// onBlur={() => setFocus(false)}
+						onBlur={() => false}
 					/>
 					<TrueStyledButton
 						type="submit"
 						onClick={(ev) => {
 							ev.preventDefault();
 							setRefresh(!refresh);
+							setFocus(!focus);
 							navigate("/results", { replace: true });
 						}}
 					>

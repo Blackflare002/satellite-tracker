@@ -8,6 +8,7 @@ export default createGlobalStyle`
 	--trulyDarkGrey: #23252a;
 	--lightBlueGrey: #828696;
 	--paleBlueGrey: #858f9b;
+	--gentlePurple: #6D39ED;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 

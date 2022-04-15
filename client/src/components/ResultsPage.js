@@ -29,7 +29,9 @@ const ResultsPage = () => {
 				{results &&
 					results.map((el) => {
 						return (
-							<div>
+							<LinkContainer
+								key={Math.floor(Math.random() * 1234567)}
+							>
 								<StyledLink
 									to={"/details"}
 									onClick={() => setSats(el)}
@@ -37,13 +39,21 @@ const ResultsPage = () => {
 									{/* {console.log("EL: ", el)} */}
 									<div>{el.properties.name}</div>
 								</StyledLink>
-							</div>
+							</LinkContainer>
 						);
 					})}
 			</Wrapper>
 		</Margins>
 	);
 };
+
+const LinkContainer = styled.div`
+	border: 2px solid royalblue;
+	padding: 20px;
+	:hover {
+		background-color: #6d39ed;
+	}
+`;
 
 const Margins = styled.div`
 	display: flex;

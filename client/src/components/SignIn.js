@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import UserInfoContext from "./UserInfoContext";
 import styled, { keyframes } from "styled-components";
 import { FaSatellite } from "react-icons/fa";
+import { StyledInput } from "./Search";
 
 export const SignIn = () => {
 	const [user, setUser] = useState("");
@@ -59,7 +60,7 @@ export const SignIn = () => {
 					<InnerBox>
 						<UserBox>
 							<label htmlFor="username">Username: </label>
-							<input
+							<StyledInput
 								placeholder="Write your username!"
 								id="username"
 								onChange={(ev) => handleChange(ev.target.value)}
@@ -86,7 +87,7 @@ export const TrueStyledButton = styled.button`
 	border-radius: 20px;
 	padding: 10px;
 	:hover {
-		background-color: indigo;
+		background-color: navy;
 	}
 `;
 

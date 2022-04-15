@@ -134,11 +134,11 @@ const Details = () => {
 				<p>Latitude: {lat ? lat.toFixed(3) : "N/A"}</p>
 				<p>Longitude: {long ? long.toFixed(3) : "N/A"}</p>
 				{long && (
-					<a
+					<StyledA
 						href={`https://maps.google.com/maps?q=${lat},${long}&z=4`}
 					>
 						Link
-					</a>
+					</StyledA>
 				)}
 				{long ? (
 					<>
@@ -199,6 +199,20 @@ const Details = () => {
 		</Container>
 	);
 };
+
+const StyledA = styled.a`
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	border: solid 2px royalblue;
+	border-radius: 20px;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 12px;
+	:hover {
+		background-color: var(--gentlePurple);
+	}
+`;
 
 const NoTrackBox = styled.div`
 	border: solid 2px red;

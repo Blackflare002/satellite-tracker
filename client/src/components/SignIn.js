@@ -7,6 +7,7 @@ import { FaSatellite } from "react-icons/fa";
 export const SignIn = () => {
 	const [user, setUser] = useState("");
 	const [loggedIn, setLoggedIn] = useState(false);
+	const [error, setError] = useState(false);
 
 	const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
@@ -39,7 +40,7 @@ export const SignIn = () => {
 					navigate("/", { replace: true });
 				} else {
 					console.log("error");
-					// setError(true);
+					setError(true);
 				}
 			});
 	};
@@ -64,13 +65,39 @@ export const SignIn = () => {
 								onChange={(ev) => handleChange(ev.target.value)}
 							/>
 						</UserBox>
-						<StyledButton type="submit">Submit</StyledButton>
+						<StyledButtonSP type="submit">Submit</StyledButtonSP>
+						{error && (
+							<ErrorMessage>
+								That usename does not exist, please try again.
+							</ErrorMessage>
+						)}
 					</InnerBox>
 				</form>
 			</OuterBox>
 		</TopLevel>
 	);
 };
+
+export const TrueStyledButton = styled.button`
+	background-color: var(--trulyDarkGrey);
+	color: white;
+	font-weight: bold;
+	border: solid 2px orange;
+	border-radius: 20px;
+	padding: 10px;
+	:hover {
+		background-color: indigo;
+	}
+`;
+
+const StyledButtonSP = styled(TrueStyledButton)`
+	margin-top: 20px;
+`;
+
+const ErrorMessage = styled.div`
+	padding-top: 20px;
+	color: red;
+`;
 
 const TopLevel = styled.div`
 	/* overflow: hidden; */
@@ -98,15 +125,13 @@ const SatelliteDiv = styled.p`
 	width: fit-content;
 	position: relative;
 	top: 50px;
+	padding: 0;
+	margin: 0;
 `;
 
 const StyledFaSatellite = styled(FaSatellite)`
 	font-size: 50px;
 	animation: ${rotation} 4s linear normal infinite;
-`;
-
-const StyledButton = styled.button`
-	margin-top: 30px;
 `;
 
 const UserBox = styled.div`

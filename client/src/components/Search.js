@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SatsContext from "./SatsContext";
 import SearchResults from "./SearchResults";
 import { useNavigate } from "react-router-dom";
+import { TrueStyledButton } from "./SignIn";
 
 const Search = () => {
 	const {
@@ -45,7 +46,7 @@ const Search = () => {
 						onFocus={() => true}
 						// onBlur={() => setFocus(false)}
 					/>
-					<button
+					<TrueStyledButton
 						type="submit"
 						onClick={(ev) => {
 							ev.preventDefault();
@@ -54,7 +55,7 @@ const Search = () => {
 						}}
 					>
 						Search
-					</button>
+					</TrueStyledButton>
 				</InnerBox>
 			</form>
 			{focus && allSats && <SearchResults />}
@@ -68,7 +69,11 @@ const InnerBox = styled.div`
 	align-items: baseline;
 `;
 
-const StyledInput = styled.input``;
+export const StyledInput = styled.input`
+	padding: 8px;
+	border-radius: 15px;
+	border: none;
+`;
 
 const Wrapper = styled.div`
 	position: relative;

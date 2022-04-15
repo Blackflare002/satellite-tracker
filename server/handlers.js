@@ -49,10 +49,10 @@ const signIn = async (req, res) => {
 			data: currentUser,
 		});
 	} else {
-		console.log(err.stack);
-		res
-			.status(404)
-			.json({ status: 404, data: req.body, message: err.message });
+		res.status(404).json({
+			status: 404,
+			message: "User not found.",
+		});
 	}
 	client.close();
 };

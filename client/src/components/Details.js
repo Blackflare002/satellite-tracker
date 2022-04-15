@@ -16,6 +16,7 @@ import {
 	Marker,
 } from "@react-google-maps/api";
 import UserInfoContext from "./UserInfoContext";
+import { TrueStyledButton } from "./SignIn";
 
 // console.log(process.env.REACT_APP_GOOGLE_API_KEY);
 
@@ -31,8 +32,15 @@ const Details = () => {
 	const [commentValue, setCommentValue] = useState("");
 	// const [username, setUsername] = useState("");
 
-	const { sats, setSats, theNumber, update, setUpdate } =
-		useContext(SatsContext);
+	const {
+		sats,
+		setSats,
+		theNumber,
+		update,
+		setUpdate,
+		newComment,
+		setNewComment,
+	} = useContext(SatsContext);
 	const { userInfo } = useContext(UserInfoContext);
 
 	useEffect(() => {
@@ -132,9 +140,9 @@ const Details = () => {
 						Link
 					</a>
 				)}
-				<button onClick={() => setUpdate(!update)}>
+				<TrueStyledButton onClick={() => setUpdate(!update)}>
 					Update Coordinates
-				</button>
+				</TrueStyledButton>
 				<LoadScript googleMapsApiKey="AIzaSyDhtNwzYNDDMOROyMq4L0i1c_yJ8jjwfYk">
 					<GoogleMap
 						mapContainerStyle={containerStyle}
@@ -163,9 +171,14 @@ const Details = () => {
 									onChange={writeComment}
 									value={commentValue}
 								/>
-								<button onClick={(ev) => sendComment(ev)}>
+								<TrueStyledButton
+									onClick={(ev) => {
+										sendComment(ev);
+										setNewComment(!newComment);
+									}}
+								>
 									Post!
-								</button>
+								</TrueStyledButton>
 							</>
 						) : (
 							<StyledLink to={"/sign-in"}>

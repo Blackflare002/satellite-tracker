@@ -5,13 +5,13 @@ import { DateTime } from "luxon";
 import { CommentsBox } from "./Details";
 
 const Comments = () => {
-	const { sats } = useContext(SatsContext);
+	const { sats, newComment, setNewComment } = useContext(SatsContext);
 	const [comments, setComments] = useState(null);
 	useEffect(() => {
 		fetch(`/comments/${sats.id}`)
 			.then((res) => res.json())
 			.then((info) => setComments(info.data));
-	}, [comments]);
+	}, [newComment]);
 
 	return (
 		<TopLevelBox>

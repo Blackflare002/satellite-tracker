@@ -10,7 +10,8 @@ export const SignIn = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [error, setError] = useState(false);
 
-	const { userInfo, setUserInfo } = useContext(UserInfoContext);
+	// userInfo,
+	const { setUserInfo } = useContext(UserInfoContext);
 
 	const handleChange = (value) => {
 		setUser(value);

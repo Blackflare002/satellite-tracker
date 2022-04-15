@@ -9,7 +9,7 @@ import {
 import { ImSpinner9 } from "react-icons/im";
 import SatsContext from "./SatsContext";
 import styled, { keyframes } from "styled-components";
-import Comments from "./Comments";
+// import Comments from "./Comments";
 import {
 	GoogleMap,
 	LoadScript,
@@ -32,15 +32,9 @@ const Details = () => {
 	const [commentValue, setCommentValue] = useState("");
 	// const [username, setUsername] = useState("");
 
-	const {
-		sats,
-		setSats,
-		theNumber,
-		update,
-		setUpdate,
-		newComment,
-		setNewComment,
-	} = useContext(SatsContext);
+	// setSats, theNumber,
+	const { sats, update, setUpdate, newComment, setNewComment } =
+		useContext(SatsContext);
 	const { userInfo } = useContext(UserInfoContext);
 
 	useEffect(() => {
@@ -65,9 +59,7 @@ const Details = () => {
 	const writeComment = (eve) => {
 		setCommentValue(eve.target.value);
 	};
-	// const writeUsername = (ev) => {
-	// 	setUsername(ev.target.value);
-	// };
+
 	const sendComment = (ev) => {
 		ev.preventDefault();
 		fetch("/details", {

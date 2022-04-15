@@ -4,7 +4,8 @@ import styled from "styled-components";
 import SatsContext from "./SatsContext";
 
 const ResultsPage = () => {
-	const { search, allSats, refresh, sats, setSats } =
+	// sats,
+	const { search, allSats, refresh, setSats } =
 		useContext(SatsContext);
 	const [results, setResults] = useState(null);
 

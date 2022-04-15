@@ -7,14 +7,14 @@ import SatsContext from "./components/SatsContext";
 import GlobalStyles from "./components/GlobalStyles";
 import styled from "styled-components";
 import Search from "./components/Search";
-import SearchResults from "./components/SearchResults";
+// import SearchResults from "./components/SearchResults";
 import ResultsPage from "./components/ResultsPage";
 import { SignIn } from "./components/SignIn";
 import Comments from "./components/Comments";
 
 function App() {
-	const { sats, allSats, searchResults, search } =
-		useContext(SatsContext);
+	// allSats, searchResults,
+	const { sats, search } = useContext(SatsContext);
 	return (
 		<>
 			<BrowserRouter>

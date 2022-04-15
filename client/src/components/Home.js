@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+// useEffect, useState
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
 import { GiMovementSensor } from "react-icons/gi";
@@ -6,7 +7,8 @@ import SatsContext from "./SatsContext";
 import styled, { keyframes } from "styled-components";
 
 const Home = () => {
-	const { sats, setSats, theNumber } = useContext(SatsContext);
+	// setSats, theNumber
+	const { sats } = useContext(SatsContext);
 
 	// console.log(sats);
 	// console.log(id ? id : null);

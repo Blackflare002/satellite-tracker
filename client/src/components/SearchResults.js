@@ -1,14 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+// useState
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import SatsContext from "./SatsContext";
-import { Link, useNavigate } from "react-router-dom";
+// useNavigate
+import { Link } from "react-router-dom";
 
 const SearchResults = () => {
+	// setSearch, setAllSats,
 	const {
-		search,
-		setSearch,
-		allSats,
-		setAllSats,
+		search,		
+		allSats,		
 		searchResults,
 		setSearchResults,
 		setSats,

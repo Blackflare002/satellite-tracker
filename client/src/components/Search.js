@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+// useState
+import { useContext } from "react";
 import styled from "styled-components";
 import SatsContext from "./SatsContext";
 import SearchResults from "./SearchResults";
@@ -6,12 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { TrueStyledButton } from "./SignIn";
 
 const Search = () => {
+	// searchResults, setSearchResults,
 	const {
 		search,
 		setSearch,
 		allSats,
-		searchResults,
-		setSearchResults,
 		refresh,
 		setRefresh,
 		focus,

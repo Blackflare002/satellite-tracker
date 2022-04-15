@@ -5,7 +5,8 @@ import { DateTime } from "luxon";
 import { CommentsBox } from "./Details";
 
 const Comments = () => {
-	const { sats, newComment, setNewComment } = useContext(SatsContext);
+	// setNewComment
+	const { sats, newComment } = useContext(SatsContext);
 	const [comments, setComments] = useState(null);
 	useEffect(() => {
 		fetch(`/comments/${sats.id}`)

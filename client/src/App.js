@@ -11,6 +11,7 @@ import Search from "./components/Search";
 import ResultsPage from "./components/ResultsPage";
 import { SignIn } from "./components/SignIn";
 import Comments from "./components/Comments";
+import NEO from "./components/NEO";
 
 function App() {
 	// allSats, searchResults,
@@ -44,6 +45,7 @@ function App() {
 							path="/results"
 							element={search && <ResultsPage />}
 						/>
+						<Route exact path="/NEO" element={<NEO />} />
 					</Routes>
 				</Main>
 			</BrowserRouter>

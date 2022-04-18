@@ -1,17 +1,10 @@
 // useContext,
-import {
-	createContext,
-	useState,
-	useEffect,
-} from "react";
+import { createContext, useState, useEffect } from "react";
 
 const SatsContext = createContext(null);
 
 export const SatsContextProvider = ({ children }) => {
 	const [sats, setSats] = useState(null);
-	let theNumber = Math.round(Math.random() * 49);
-	// let id = sats[theNumber].id;
-	// console.log(id);
 	const [search, setSearch] = useState(null);
 	const [allSats, setAllSats] = useState(null);
 	const [searchResults, setSearchResults] = useState(null);
@@ -21,6 +14,7 @@ export const SatsContextProvider = ({ children }) => {
 	const [update, setUpdate] = useState(false);
 	const [newComment, setNewComment] = useState(false);
 
+	let theNumber = Math.round(Math.random() * 49);
 	useEffect(() => {
 		fetch("https://api.spectator.earth/satellite/")
 			.then((res) => res.json())

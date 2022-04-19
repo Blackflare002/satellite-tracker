@@ -123,7 +123,7 @@ to {
 `;
 
 const SatelliteDiv = styled.p`
-	animation: ${translate} 12s linear alternate infinite;
+	animation: ${translate} 10s linear alternate infinite;
 	width: fit-content;
 	position: relative;
 	top: 50px;

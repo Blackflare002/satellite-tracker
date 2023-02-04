@@ -1,6 +1,13 @@
-import { useEffect, useState, useContext } from "react";
+import {
+	useEffect,
+	useState,
+	useContext,
+} from "react";
 import { Link } from "react-router-dom";
-import { FaSpaceShuttle, FaSatellite } from "react-icons/fa";
+import {
+	FaSpaceShuttle,
+	FaSatellite,
+} from "react-icons/fa";
 import {
 	GiBeamSatellite,
 	GiDefenseSatellite,
@@ -8,7 +15,9 @@ import {
 } from "react-icons/gi";
 import { ImSpinner9 } from "react-icons/im";
 import SatsContext from "./SatsContext";
-import styled, { keyframes } from "styled-components";
+import styled, {
+	keyframes,
+} from "styled-components";
 // import Comments from "./Comments";
 import {
 	GoogleMap,
@@ -29,16 +38,26 @@ const Details = () => {
 	const [norad, setNorad] = useState(null);
 	const [lat, setLat] = useState(null);
 	const [long, setLong] = useState(null);
-	const [commentValue, setCommentValue] = useState("");
+	const [commentValue, setCommentValue] =
+		useState("");
 	// const [username, setUsername] = useState("");
 
 	// setSats, theNumber,
-	const { sats, update, setUpdate, newComment, setNewComment } =
-		useContext(SatsContext);
-	const { userInfo } = useContext(UserInfoContext);
+	const {
+		sats,
+		update,
+		setUpdate,
+		newComment,
+		setNewComment,
+	} = useContext(SatsContext);
+	const { userInfo } = useContext(
+		UserInfoContext
+	);
 
 	useEffect(() => {
-		fetch(`https://api.spectator.earth/satellite/${sats.id}/`)
+		fetch(
+			`https://api.spectator.earth/satellite/${sats.id}/`
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				// console.log(data);
@@ -51,8 +70,16 @@ const Details = () => {
 				// );
 				setName(data.properties.name);
 				setNorad(data.properties.norad_id);
-				setLat(data.geometry ? data.geometry.coordinates[1] : null);
-				setLong(data.geometry ? data.geometry.coordinates[0] : null);
+				setLat(
+					data.geometry
+						? data.geometry.coordinates[1]
+						: null
+				);
+				setLong(
+					data.geometry
+						? data.geometry.coordinates[0]
+						: null
+				);
 			});
 	}, [update]);
 
@@ -68,7 +95,9 @@ const Details = () => {
 				user: userInfo,
 				sat: sats.id,
 			}),
-			headers: { "Content-Type": "application/json" },
+			headers: {
+				"Content-Type": "application/json",
+			},
 			method: "POST",
 		})
 			.then((res) => res.json())
@@ -88,9 +117,8 @@ const Details = () => {
 		<GiDefenseSatellite />,
 		<GiSatelliteCommunication />,
 	];
-	const [randomNumber, setRandomNumber] = useState(
-		Math.floor(Math.random() * 6)
-	);
+	const [randomNumber, setRandomNumber] =
+		useState(Math.floor(Math.random() * 6));
 	let randomIcon = icons[randomNumber];
 	// console.log(randomIcon);
 
@@ -118,13 +146,22 @@ const Details = () => {
 		<Container>
 			<ContentWrapper>
 				<IconWrapper>
-					{randomIcon ? <div>{randomIcon}</div> : <FaSatellite />}
+					{randomIcon ? (
+						<div>{randomIcon}</div>
+					) : (
+						<FaSatellite />
+					)}
 				</IconWrapper>
 				{/* <p>{sats.id}</p> */}
 				<p>Name: {name}</p>
 				<p>NORAD ID: {norad}</p>
-				<p>Latitude: {lat ? lat.toFixed(3) : "N/A"}</p>
-				<p>Longitude: {long ? long.toFixed(3) : "N/A"}</p>
+				<p>
+					Latitude: {lat ? lat.toFixed(3) : "N/A"}
+				</p>
+				<p>
+					Longitude:{" "}
+					{long ? long.toFixed(3) : "N/A"}
+				</p>
 				{long && (
 					<StyledA
 						href={`https://maps.google.com/maps?q=${lat},${long}&z=4`}
@@ -134,10 +171,14 @@ const Details = () => {
 				)}
 				{long ? (
 					<>
-						<TrueStyledButton onClick={() => setUpdate(!update)}>
+						<TrueStyledButton
+							onClick={() => setUpdate(!update)}
+						>
 							Update Coordinates
 						</TrueStyledButton>
-						<LoadScript googleMapsApiKey="AIzaSyDhtNwzYNDDMOROyMq4L0i1c_yJ8jjwfYk">
+						<LoadScript googleMapsApiKey="AIzaSyAXITMBZxg8zrpWARxnCF7CarXSreJC5mw">
+							{/* new: AIzaSyAXITMBZxg8zrpWARxnCF7CarXSreJC5mw */}
+							{/* original: AIzaSyDhtNwzYNDDMOROyMq4L0i1c_yJ8jjwfYk*/}
 							<GoogleMap
 								mapContainerStyle={containerStyle}
 								center={center}
@@ -164,7 +205,10 @@ const Details = () => {
 								onChange={writeUsername}
 								value={username}
 							/> */}
-									<div>Write your comment here, {userInfo}!</div>
+									<div>
+										Write your comment here,{" "}
+										{userInfo}!
+									</div>
 								</div>
 								<StyledTextarea
 									placeholder="Write a comment!"
@@ -182,8 +226,9 @@ const Details = () => {
 							</>
 						) : (
 							<StyledLink to={"/sign-in"}>
-								You must <SpecialSpan>sign in</SpecialSpan> before
-								commenting!
+								You must{" "}
+								<SpecialSpan>sign in</SpecialSpan>{" "}
+								before commenting!
 							</StyledLink>
 						)}
 					</FormDiv>

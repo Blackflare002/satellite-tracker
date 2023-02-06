@@ -10,6 +10,7 @@
 		"react-scripts": "^5.0.1"
 	},
 	"scripts": {
-		"start": "concurrently \"cd client && react-scripts start\" \"cd server && nodemon server/server.js\""
+		"start": "concurrently \"cd client && react-scripts start\" \"cd server && nodemon server/server.js\"",
+		"build": "concurrently \"npm install\" \"cd client && yarn install\" \"cd server && yarn install\""
 	}
 }

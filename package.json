@@ -11,6 +11,6 @@
 	},
 	"scripts": {
 		"start": "concurrently \"cd client && react-scripts start\" \"cd server && nodemon server/server.js\"",
-		"build": "concurrently \"npm install\" \"cd client && yarn install\" \"cd server && yarn install\""
+		"build": "concurrently \"cd client && yarn install\" \"cd server && yarn install\""
 	}
 }

@@ -1,5 +1,9 @@
 import { useContext } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+	BrowserRouter,
+	Route,
+	Routes,
+} from "react-router-dom";
 import Details from "./components/Details";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -14,8 +18,18 @@ import Comments from "./components/Comments";
 import NEO from "./components/NEO";
 
 function App() {
+	// test fetch
+	useEffect(() => {
+		fetch("/get-users")
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+			});
+	}, []);
+	//
 	// allSats, searchResults,
-	const { sats, search } = useContext(SatsContext);
+	const { sats, search } =
+		useContext(SatsContext);
 	return (
 		<>
 			<BrowserRouter>
@@ -26,8 +40,16 @@ function App() {
 						<Search />
 					</SearchBox>
 					<Routes>
-						<Route exact path="/" element={<Home />} />
-						<Route exact path="/sign-in" element={<SignIn />} />
+						<Route
+							exact
+							path="/"
+							element={<Home />}
+						/>
+						<Route
+							exact
+							path="/sign-in"
+							element={<SignIn />}
+						/>
 						<Route
 							exact
 							path="/details"
@@ -45,7 +67,11 @@ function App() {
 							path="/results"
 							element={search && <ResultsPage />}
 						/>
-						<Route exact path="/NEO" element={<NEO />} />
+						<Route
+							exact
+							path="/NEO"
+							element={<NEO />}
+						/>
 					</Routes>
 				</Main>
 			</BrowserRouter>

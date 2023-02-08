@@ -70,7 +70,7 @@ export const SignIn = () => {
 						<StyledButtonSP type="submit">Submit</StyledButtonSP>
 						{error && (
 							<ErrorMessage>
-								That usename does not exist, please try again.
+								That username does not exist, please try again.
 							</ErrorMessage>
 						)}
 					</InnerBox>

@@ -10,7 +10,12 @@ app.use(morgan("tiny"));
 app.use(cors());
 app.use(helmet());
 
-const { postComment, getComments, getUsers, signIn } = require("./handlers");
+const {
+	postComment,
+	getComments,
+	getUsers,
+	signIn,
+} = require("./handlers");
 
 // app.get("/", (req, res) => {
 // 	// res.send("Hello World!");
@@ -28,7 +33,8 @@ app.post("/sign-in", signIn);
 app.get("*", (req, res) => {
 	res.status(404).json({
 		status: 404,
-		message: "This is obviously not what you are looking for.",
+		message:
+			"This is not what you are looking for.",
 	});
 });
 

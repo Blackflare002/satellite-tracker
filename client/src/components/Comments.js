@@ -1,4 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import {
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 import styled from "styled-components";
 import SatsContext from "./SatsContext";
 import { DateTime } from "luxon";
@@ -6,10 +10,20 @@ import { CommentsBox } from "./Details";
 
 const Comments = () => {
 	// setNewComment
-	const { sats, newComment } = useContext(SatsContext);
+	const { sats, newComment } =
+		useContext(SatsContext);
 	const [comments, setComments] = useState(null);
 	useEffect(() => {
-		fetch(`/comments/${sats.id}`)
+		fetch(
+			"https://sat-track-be.onrender.com/comments/:id",
+			{
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+				method: "GET",
+			}
+		)
 			.then((res) => res.json())
 			.then((info) => setComments(info.data));
 	}, [newComment]);
@@ -20,13 +34,20 @@ const Comments = () => {
 				{comments &&
 					comments.map((el) => {
 						let date = el.date;
-						let newFormat = { ...DateTime.DATETIME_MED };
+						let newFormat = {
+							...DateTime.DATETIME_MED,
+						};
 						// console.log(DateTime.fromISO(date));
 						let date2 = DateTime.fromISO(date);
 						// console.log(date2.toLocaleString(newFormat));
-						let properDate = date2.toLocaleString(newFormat);
+						let properDate =
+							date2.toLocaleString(newFormat);
 						return (
-							<div key={Math.floor(Math.random() * 800813555)}>
+							<div
+								key={Math.floor(
+									Math.random() * 800813555
+								)}
+							>
 								<CommentContainer>
 									<UserContainer>
 										<div>{el.user}</div>

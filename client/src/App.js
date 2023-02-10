@@ -21,7 +21,14 @@ function App() {
 	// test fetch
 	useEffect(() => {
 		fetch(
-			"https://sat-track-be.onrender.com/get-users"
+			"https://sat-track-be.onrender.com/get-users",
+			{
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+				method: "GET",
+			}
 		)
 			.then((res) => res.json())
 			.then((data) => {

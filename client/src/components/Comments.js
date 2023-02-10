@@ -15,7 +15,7 @@ const Comments = () => {
 	const [comments, setComments] = useState(null);
 	useEffect(() => {
 		fetch(
-			"https://sat-track-be.onrender.com/comments/:id",
+			`https://sat-track-be.onrender.com/comments/${sats.id}`,
 			{
 				headers: {
 					Accept: "application/json",

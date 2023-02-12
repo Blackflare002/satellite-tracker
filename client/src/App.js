@@ -18,24 +18,27 @@ import Comments from "./components/Comments";
 import NEO from "./components/NEO";
 
 function App() {
+	// 
 	// test fetch
-	useEffect(() => {
-		fetch(
-			"https://sat-track-be.onrender.com/get-users",
-			{
-				headers: {
-					Accept: "application/json",
-					"Content-Type": "application/json",
-				},
-				method: "GET",
-			}
-		)
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-			});
-	}, []);
+	// 
+	// useEffect(() => {
+	// 	fetch(
+	// 		"https://sat-track-be.onrender.com/get-users",
+	// 		{
+	// 			headers: {
+	// 				Accept: "application/json",
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 			method: "GET",
+	// 		}
+	// 	)
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			console.log(data);
+	// 		});
+	// }, []);
 	//
+	// 
 	// allSats, searchResults,
 	const { sats, search } =
 		useContext(SatsContext);

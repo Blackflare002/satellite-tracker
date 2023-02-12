@@ -22,7 +22,7 @@ const Search = () => {
 		e.preventDefault();
 		console.log(search);
 		setFocus(true);
-		console.log(document.getElementById("header-search").value);
+		// console.log(document.getElementById("header-search").value);
 		setSearch(document.getElementById("header-search").value);
 	};
 

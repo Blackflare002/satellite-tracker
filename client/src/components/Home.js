@@ -8,9 +8,7 @@ import styled, { keyframes } from "styled-components";
 
 const Home = () => {
 	const { sats } = useContext(SatsContext);
-
 	const [hover, setHover] = useState(false);
-
 	const onHover = () => {
 		setHover(true);
 	};

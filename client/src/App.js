@@ -18,9 +18,9 @@ import Comments from "./components/Comments";
 import NEO from "./components/NEO";
 
 function App() {
-	// 
+	//
 	// test fetch
-	// 
+	//
 	// useEffect(() => {
 	// 	fetch(
 	// 		"https://sat-track-be.onrender.com/get-users",
@@ -38,7 +38,7 @@ function App() {
 	// 		});
 	// }, []);
 	//
-	// 
+	//
 	// allSats, searchResults,
 	const { sats, search } =
 		useContext(SatsContext);
@@ -95,9 +95,9 @@ const SearchBox = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 15px;
+	margin-top: 15px;
 	position: relative;
-	right: 75px;
+	right: 20px;
 `;
 
 const Main = styled.div`
@@ -106,7 +106,6 @@ const Main = styled.div`
 	font-family: sans-serif;
 	min-height: 100vh;
 	height: 100%;
-	/* overflow: clip; */
 `;
 
 export default App;

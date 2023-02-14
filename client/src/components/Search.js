@@ -23,20 +23,22 @@ const Search = () => {
 		console.log(search);
 		setFocus(true);
 		// console.log(document.getElementById("header-search").value);
-		setSearch(document.getElementById("header-search").value);
+		setSearch(
+			document.getElementById("header-search")
+				.value
+		);
 	};
 
 	let navigate = useNavigate();
-
 	// console.log(searchResults);
 
 	return (
 		<Wrapper>
 			<form>
 				<InnerBox>
-					<label htmlFor="header-search">
+					<StyledLabel htmlFor="header-search">
 						<span>Search Satellites: </span>
-					</label>
+					</StyledLabel>
 					<StyledInput
 						onChange={handleChange}
 						placeholder="Search for sats!"
@@ -52,7 +54,9 @@ const Search = () => {
 							ev.preventDefault();
 							setRefresh(!refresh);
 							setFocus(!focus);
-							navigate("/results", { replace: true });
+							navigate("/results", {
+								replace: true,
+							});
 						}}
 					>
 						Search
@@ -66,8 +70,18 @@ const Search = () => {
 
 const InnerBox = styled.div`
 	display: flex;
-	gap: 5px;
 	align-items: baseline;
+	gap: 15px;
+	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+		justify-content: space-evenly;
+		align-items: center;
+	}
+`;
+
+const StyledLabel = styled.label`
+	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+		width: 70px;
+	}
 `;
 
 export const StyledInput = styled.input`
@@ -78,9 +92,7 @@ export const StyledInput = styled.input`
 
 const Wrapper = styled.div`
 	position: relative;
-	left: 50px;
 	display: flex;
-	gap: 10px;
 `;
 
 export default Search;

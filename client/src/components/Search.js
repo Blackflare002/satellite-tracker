@@ -75,12 +75,15 @@ const InnerBox = styled.div`
 	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
 		justify-content: space-evenly;
 		align-items: center;
+		margin-left: 25px;
 	}
 `;
 
 const StyledLabel = styled.label`
 	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
 		width: 70px;
+		/* margin-left: 25px; */
+		/* margin-right: 25px; */
 	}
 `;
 

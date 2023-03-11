@@ -2,9 +2,14 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
-import { GiMovementSensor, GiAsteroid } from "react-icons/gi";
+import {
+	GiMovementSensor,
+	GiAsteroid,
+} from "react-icons/gi";
 import SatsContext from "./SatsContext";
-import styled, { keyframes } from "styled-components";
+import styled, {
+	keyframes,
+} from "styled-components";
 
 const Home = () => {
 	const { sats } = useContext(SatsContext);
@@ -20,7 +25,9 @@ const Home = () => {
 		<>
 			<Wrapper>
 				<EarthBox>
-					<div>Click the Earth, see what's out there!</div>
+					<div>
+						Click the Earth, see what's out there!
+					</div>
 					<div>
 						<Link to={"/details"}>
 							<StyledEarth />
@@ -34,7 +41,11 @@ const Home = () => {
 								onMouseEnter={onHover}
 								onMouseLeave={onLeave}
 							/>
-							{hover && <AsteroidText>Asteroids!</AsteroidText>}
+							{hover && (
+								<AsteroidText>
+									Asteroids!
+								</AsteroidText>
+							)}
 						</AsteroidFlex>
 					</StyledLink>
 				</AsteroidBox>
@@ -43,11 +54,28 @@ const Home = () => {
 	) : (
 		<Wrapper>
 			<div>
-				Scanning for satellites... <StyledGiMovementSensor />
+				Scanning for satellites...{" "}
+				<StyledGiMovementSensor />
 			</div>
 		</Wrapper>
 	);
 };
+
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+	top: 150px;
+	/* border: solid 2px black; */
+	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+		border: solid 2px red;
+		position: relative;
+		top: 0;
+		margin-top: 25px;
+	}
+`;
 
 const EarthBox = styled.div`
 	display: flex;
@@ -55,6 +83,20 @@ const EarthBox = styled.div`
 	align-items: center;
 	flex-direction: column;
 	/* border: solid 2px black; */
+`;
+
+const AsteroidBox = styled.div`
+	position: relative;
+	left: -200px;
+	top: -150px;
+	width: fit-content;
+	height: fit-content;
+	/* border: solid 2px black; */
+	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+		position: relative;
+		top: 70px;
+		left: 0;
+	}
 `;
 
 const AsteroidText = styled.div`
@@ -73,17 +115,6 @@ const AsteroidFlex = styled.div`
 const StyledLink = styled(Link)`
 	text-decoration: none;
 	color: var(--offwhite);
-`;
-
-const Wrapper = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	position: relative;
-	top: 150px;
-	/* height: 80%; */
-	/* border: solid 2px black; */
 `;
 
 const rotation = keyframes`
@@ -107,21 +138,13 @@ const asteroidColors = keyframes`
 }
 `;
 
-const AsteroidBox = styled.div`
-	position: relative;
-	left: -200px;
-	top: -150px;
-	width: fit-content;
-	height: fit-content;
-	/* border: solid 2px black; */
-`;
-
 const StyledAsteroid = styled(GiAsteroid)`
 	font-size: 40px;
 	color: var(--offwhite);
 	:hover {
 		animation: ${rotation} 1s linear infinite,
-			${asteroidColors} 3s ease-in-out forwards infinite alternate;
+			${asteroidColors} 3s ease-in-out forwards
+				infinite alternate;
 	}
 `;
 
@@ -134,7 +157,9 @@ to {
 }
 `;
 
-const StyledGiMovementSensor = styled(GiMovementSensor)`
+const StyledGiMovementSensor = styled(
+	GiMovementSensor
+)`
 	animation: ${rotation} 1s linear infinite;
 	font-size: xx-large;
 `;
@@ -144,7 +169,8 @@ const StyledEarth = styled(IoEarthOutline)`
 	text-decoration: none;
 	color: var(--offwhite);
 	:hover {
-		animation: ${rotation} 3.5s ease-in-out infinite,
+		animation: ${rotation} 3.5s ease-in-out
+				infinite,
 			${color} 3.5s ease-in-out forwards;
 	}
 `;

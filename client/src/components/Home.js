@@ -70,7 +70,7 @@ const Wrapper = styled.div`
 	top: 150px;
 	/* border: solid 2px black; */
 	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-		border: solid 2px red;
+		/* border: solid 2px red; */
 		position: relative;
 		top: 0;
 		margin-top: 25px;

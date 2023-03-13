@@ -123,8 +123,8 @@ const Details = () => {
 	// console.log(randomIcon);
 
 	const containerStyle = {
-		width: "400px",
-		height: "400px",
+		width: "350px",
+		height: "350px",
 	};
 	const center = {
 		lat: lat,

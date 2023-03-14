@@ -70,9 +70,34 @@ const Wrapper = styled.div`
 	top: 150px;
 	/* border: solid 2px black; */
 	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+		/* iPhone 6, 7, 8 */
 		/* border: solid 2px red; */
 		position: relative;
 		top: 0;
+		margin-top: 25px;
+	}
+	@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+		/* iPhone 6+, 7+, 8+ */
+		position: relative;
+		top: 20px;
+		margin-top: 25px;
+	}
+	@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+		/* iPhone X */
+		position: relative;
+		top: 20px;
+		margin-top: 25px;
+	}
+	@media only screen and (min-device-width: 414px) and (max-device-width: 844px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+		/* iPhone 12 Pro */
+		position: relative;
+		top: 20px;
+		margin-top: 25px;
+	}
+	@media only screen and (min-device-width: 414px) and (max-device-width: 896px) and (orientation: landscape) {
+		/* iPhone XR */
+		position: relative;
+		top: 20px;
 		margin-top: 25px;
 	}
 `;

@@ -1,21 +1,33 @@
-import React, { useContext, useState } from "react";
+import React, {
+	useContext,
+	useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import UserInfoContext from "./UserInfoContext";
-import styled, { keyframes } from "styled-components";
+import styled, {
+	keyframes,
+} from "styled-components";
 import { FaSatellite } from "react-icons/fa";
 import { StyledInput } from "./Search";
 
 export const SignIn = () => {
 	const [user, setUser] = useState("");
+	const [password, setPassword] = useState("");
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [error, setError] = useState(false);
 
 	// userInfo,
-	const { setUserInfo } = useContext(UserInfoContext);
+	const { setUserInfo } = useContext(
+		UserInfoContext
+	);
 
 	const handleChange = (value) => {
 		setUser(value);
 		console.log("VALUE: ", value);
+	};
+	const handleChange2 = (value) => {
+		setPassword(value);
+		console.log("VALUE 2: ", value);
 	};
 
 	let navigate = useNavigate();
@@ -28,16 +40,21 @@ export const SignIn = () => {
 				"Content-Type": "application/json",
 			},
 			method: "POST",
-			body: JSON.stringify({ user }),
+			body: JSON.stringify({ user, password }),
 		})
 			.then((res) => res.json())
 			.then((data) => {
 				console.log("SIGNIN DATA: ", data);
 				if (data.status === 201) {
 					setUser(data.name);
+					setPassword(data.password);
 					console.log("user: ", user);
+					console.log("pw: ", password);
 					setLoggedIn(true);
-					sessionStorage.setItem("user", JSON.stringify(user));
+					sessionStorage.setItem(
+						"user",
+						JSON.stringify(user)
+					);
 					setUserInfo(user);
 					navigate("/", { replace: true });
 				} else {
@@ -60,17 +77,32 @@ export const SignIn = () => {
 				<form onSubmit={handleSubmit}>
 					<InnerBox>
 						<UserBox>
-							<label htmlFor="username">Username: </label>
+							<label htmlFor="username">
+								Username:{" "}
+							</label>
 							<StyledInput
 								placeholder="Write your username!"
 								id="username"
-								onChange={(ev) => handleChange(ev.target.value)}
+								onChange={(ev) =>
+									handleChange(ev.target.value)
+								}
+							/>
+							<StyledInput
+								placeholder="Write your password!"
+								id="password"
+								type="password"
+								onChange={(ev) =>
+									handleChange2(ev.target.value)
+								}
 							/>
 						</UserBox>
-						<StyledButtonSP type="submit">Submit</StyledButtonSP>
+						<StyledButtonSP type="submit">
+							Submit
+						</StyledButtonSP>
 						{error && (
 							<ErrorMessage>
-								That username does not exist, please try again.
+								Username or password error, please
+								try again.
 							</ErrorMessage>
 						)}
 					</InnerBox>
@@ -123,7 +155,8 @@ to {
 `;
 
 const SatelliteDiv = styled.p`
-	animation: ${translate} 10s linear alternate infinite;
+	animation: ${translate} 10s linear alternate
+		infinite;
 	width: fit-content;
 	position: relative;
 	top: 50px;

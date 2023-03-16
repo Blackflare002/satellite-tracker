@@ -39,7 +39,7 @@ const getUsers = async (req, res) => {
 // console.log(users);
 
 const signIn = async (req, res) => {
-	console.log("Sent, handlers 42: ", req.body);
+	// console.log("Sent, handlers 42: ", req.body);
 	const client = new MongoClient(
 		MONGO_URI,
 		options
@@ -83,7 +83,7 @@ const postComment = async (req, res) => {
 		MONGO_URI,
 		options
 	);
-	console.log(req.body);
+	// console.log(req.body);
 	let newReq = {
 		...req.body,
 		_id: uuidv4(),
@@ -101,7 +101,7 @@ const postComment = async (req, res) => {
 			data: newReq,
 		});
 	} catch (err) {
-		console.log(err.stack);
+		// console.log(err.stack);
 		res.status(500).json({
 			status: 500,
 			data: req.body,
@@ -116,7 +116,7 @@ const getComments = async (req, res) => {
 		MONGO_URI,
 		options
 	);
-	console.log(req.params);
+	// console.log(req.params);
 	const { id } = req.params;
 	// console.log(typeof id);
 	try {
@@ -133,7 +133,7 @@ const getComments = async (req, res) => {
 			data: comments,
 		});
 	} catch (err) {
-		console.log(err.stack);
+		// console.log(err.stack);
 		res.status(500).json({
 			status: 500,
 			data: req.body,

@@ -23,11 +23,11 @@ export const SignIn = () => {
 
 	const handleChange = (value) => {
 		setUser(value);
-		console.log("VALUE: ", value);
+		// console.log("VALUE: ", value);
 	};
 	const handleChange2 = (value) => {
 		setPassword(value);
-		console.log("VALUE 2: ", value);
+		// console.log("VALUE 2: ", value);
 	};
 
 	let navigate = useNavigate();
@@ -44,12 +44,12 @@ export const SignIn = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log("SIGNIN DATA: ", data);
+				// console.log("SIGNIN DATA: ", data);
 				if (data.status === 201) {
 					setUser(data.name);
 					setPassword(data.password);
-					console.log("user: ", user);
-					console.log("pw: ", password);
+					// console.log("user: ", user);
+					// console.log("pw: ", password);
 					setLoggedIn(true);
 					sessionStorage.setItem(
 						"user",

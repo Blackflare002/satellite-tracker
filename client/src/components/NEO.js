@@ -95,9 +95,13 @@ const NEO = () => {
 						// 	"FT, MIN: ",
 						// 	el.estimated_diameter.feet.estimated_diameter_min
 						// );
-						// 
+						//
 						return (
-							<Wrapper>
+							<Wrapper
+								key={Math.floor(
+									Math.random() * 8008135
+								)}
+							>
 								<InnerWrapper>
 									<p>NAME: {neoName}</p>
 									<p>
